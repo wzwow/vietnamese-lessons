@@ -16,6 +16,7 @@ button.alt{background:#e9e4da;color:#222}button.sm{padding:6px 12px;font-size:14
 .pips i.on{background:#222;color:#fff}.pips i.done{background:#e0c9a6;color:#222}
 .bar{height:10px;background:#f1ede4;border-radius:999px;overflow:hidden;margin:8px 0 6px}.bar i{display:block;height:100%;background:#b5452b;border-radius:999px}
 .muted{color:#777;font-size:13px}
+@media(max-width:480px){.pips .pl{display:none}.pips i{font-size:13px}}
 /* warm-up */
 .wu{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #eee}.wu:last-child{border-bottom:0}
 .wu .q{font-size:17px}.wu .a{display:none;margin-top:4px}.wu.open .a{display:block}.wu .a b{font-size:21px}
@@ -53,13 +54,13 @@ const META = {stage:1, week:1, lesson:1, total:60, review:false, prev:"", prevTi
 const WARM = [];
 const P = [
   {jp:"ma · má · mà · mả · mã · mạ", ro:"the six tones in a row", en:"ghost · mother · but · tomb · horse · rice seedling", say:"ma, má, mà, mả, mã, mạ",
-   parts:[["ma","ngang: flat, level, mid pitch","ghost"],["má","sắc: rises sharply, like an excited “ma?!”","mother"],["mà","huyền: falls low and relaxed, like a sigh","but"],["mả","hỏi: dips down then up, like a question “ma?”","tomb"],["mã","ngã: rises with a break/creak in the middle","horse"],["mạ","nặng: short, heavy, drops and stops abruptly","rice seedling"]],
-   note:"Same syllable, six meanings. Tap each tile and copy the pitch. The mark tells you the tone: none = ngang, ´ = sắc, ` = huyền, ̉ (hook) = hỏi, ~ = ngã, dot below = nặng."},
+   parts:[["ma","ngang: flat, level, mid pitch","ghost"],["má","sắc: rises sharply, like an excited “ma?!”","mother (Southern; North says mẹ)"],["mà","huyền: falls low and relaxed, like a sigh","but"],["mả","hỏi: dips down then up, like a question “ma?”","tomb"],["mã","ngã: rises with a break/creak in the middle","horse (Sino-Vietnamese; everyday word: ngựa)"],["mạ","nặng: short, heavy, drops and stops abruptly","rice seedling"]],
+   note:"Same syllable, six meanings. Tap each tile and copy the pitch. The mark tells you the tone: no mark = ngang (ma), acute ´ = sắc (má), grave ` = huyền (mà), hook above = hỏi (mả), tilde ~ = ngã (mã), dot below = nặng (mạ). Tone shapes here follow the Northern (Hà Nội) standard; in the South hỏi and ngã sound alike."},
   {jp:"Xin chào", ro:"sin chow", en:"Hello.", parts:[["xin","sin","please / (polite)"],["chào","chow","greet"]], note:"Works any time of day with anyone. Example: “Xin chào, tôi là Minh.” Hello, I'm Minh."},
   {jp:"Cảm ơn", ro:"gahm uhn", en:"Thank you.", parts:[["cảm","gahm (hỏi tone, dips)","feel"],["ơn","uhn","favour"]], note:"Example: “Cảm ơn bạn nhiều!” Thank you so much!"},
   {jp:"Không sao", ro:"khohm sow", en:"No problem.", parts:[["không","khohm","not / no"],["sao","sow","matter / why"]], note:"Answer to thanks or an apology. Example: “Không sao đâu.” It's no problem at all."},
 ];
-const V = [["ma","ma — ngang","ghost"],["má","má — sắc","mother"],["mà","mà — huyền","but"],["mả","mả — hỏi","tomb"],["mã","mã — ngã","horse"],["mạ","mạ — nặng","rice seedling"]];
+const V = [["ma","ma — ngang","ghost"],["má","má — sắc","mother (Southern)"],["mà","mà — huyền","but"],["mả","mả — hỏi","tomb"],["mã","mã — ngã","horse (formal)"],["mạ","mạ — nặng","rice seedling"]];
 const G = {pattern:"Xin chào, tôi là + name", explain:"<b>tôi</b> = I, <b>là</b> = am/is. Put your name after là to introduce yourself. Polite thanks: Cảm ơn + bạn (you) + nhiều (a lot).",
   examples:[["Xin chào, tôi là Minh.","sin chow, toy lah ming","Hello, I'm Minh."],["Cảm ơn bạn nhiều!","gahm uhn bahn nyew","Thank you so much!"],["Không sao đâu.","khohm sow dow","It's no problem at all."]],
   mistake:"Saying “cam on” flat sounds wrong. cảm has the dipping hỏi tone: let your voice dip and come back up."};
@@ -97,9 +98,9 @@ const sayOf=(o)=>o.say||o.jp;
 // ---------- sections ----------
 function progress(){const done=store("vl-done")||[],pct=Math.round(100*META.lesson/META.total);
  const label=META.review?`Phase ${META.stage} review · Lesson ${META.lesson} of ${META.total}`:`Phase ${META.stage} · Lesson ${META.lesson} of ${META.total}`;
- return `<div class="card"><div class="pips">${[1,2,3,4,5,6].map(i=>`<i class="${i<META.stage?"done":i===META.stage?"on":""}">Phase ${i}</i>`).join("")}</div>
+ return `<div class="card"><div class="pips">${[1,2,3,4,5,6].map(i=>`<i class="${i<META.stage?"done":i===META.stage?"on":""}"><span class="pl">Phase </span>${i}</i>`).join("")}</div>
  <b>${label}</b><div class="bar"><i style="width:${pct}%"></i></div><div class="muted" id="donec">${done.length} lesson${done.length===1?"":"s"} marked complete${done.includes(LESSON)?" · this one is done ✅":""}</div></div>`}
-function warm(){if(!WARM.length)return"";const rates=store("vl-rate")||{};
+function warm(){if(!WARM.length)return META.review?"":`<h2 class="sh">① Warm-up review</h2><div class="card muted">First lesson: nothing to review yet. From the next lesson, earlier phrases come back here.</div>`;const rates=store("vl-rate")||{};
  return `<h2 class="sh">① Warm-up review</h2><p class="shd">Read the English and try to say it in Vietnamese, then tap <b>Show</b> to check and hear it. Rate how well you knew it.</p><div class="card">${WARM.map((w,k)=>`<div class="wu" id="wu${k}"><div><div class="q">${w.en}</div><div class="a"><b>${w.jp}</b><div class="ro">${w.ro}</div></div></div>
  <div><button class="alt sm" onclick="wuShow(${k})">Show</button><span class="rate">${["😊","😐","😕"].map(e=>`<button class="${rates[w.ref||LESSON+":r"+k]===e?"sel":""}" onclick="wuRate(${k},'${e}',this)">${e}</button>`).join("")}</span></div></div>`).join("")}</div>`}
 function wuShow(k){const w=WARM[k];$("wu"+k).classList.add("open");play(w.ref||"r"+k,sayOf(w))}

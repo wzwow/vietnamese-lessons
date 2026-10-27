@@ -23,3 +23,16 @@ Unlike Japanese, Vietnamese words are separated by spaces. Tapped `order` tiles 
 (word order, speak-back scoring) goes through `norm()`: Unicode NFC, lower-case, punctuation removed (spaces before punctuation ignored),
 whitespace collapsed, trimmed. Write each `order` question's `tiles` so that joining them with spaces gives `answer`
 (punctuation may stay attached to a tile, e.g. `"Xin chào,"`). Speak-back scoring counts matching words.
+
+## QA before publishing (mandatory)
+Before every push:
+1. `npm install` (once; installs Playwright) then `npm run qa` (serves the repo locally; or `node qa/qa.mjs <githack-base-url>`).
+   It checks, at mobile 390×844 and desktop: no console errors / failed requests, every phrase/word/vocab/grammar/dialogue/quiz/speak-back
+   item has an mp3 that returns 200 `audio/mpeg`, every quiz answered correctly is marked Correct and reaches full marks, every wrong
+   answer is rejected, word-order tiles display with single spaces, Reset clears, menu opens/closes, all links (nav, prev/next) resolve,
+   no horizontal overflow or clipped text, NFC encoding, and no personal details.
+2. **All checks must pass** (`QA: N passed, 0 failed`). Fix and rerun until clean.
+3. Open and review the screenshots in `qa/screenshots/` (mobile and desktop: load, menu, quiz done, wrong answers) for visual glitches.
+4. Content review by hand (the script can't judge this): Vietnamese spelling and tone marks, pronunciation guides, English meanings,
+   regional notes (e.g. má = mother is Southern; North uses mẹ), and that every quiz `answer` index is actually right.
+5. Only then commit and push, and check the githack URLs at the new sha return 200.

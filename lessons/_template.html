@@ -16,6 +16,7 @@ button.alt{background:#e9e4da;color:#222}button.sm{padding:6px 12px;font-size:14
 .pips i.on{background:#222;color:#fff}.pips i.done{background:#e0c9a6;color:#222}
 .bar{height:10px;background:#f1ede4;border-radius:999px;overflow:hidden;margin:8px 0 6px}.bar i{display:block;height:100%;background:#b5452b;border-radius:999px}
 .muted{color:#777;font-size:13px}
+@media(max-width:480px){.pips .pl{display:none}.pips i{font-size:13px}}
 /* warm-up */
 .wu{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #eee}.wu:last-child{border-bottom:0}
 .wu .q{font-size:17px}.wu .a{display:none;margin-top:4px}.wu.open .a{display:block}.wu .a b{font-size:21px}
@@ -100,9 +101,9 @@ const sayOf=(o)=>o.say||o.jp;
 // ---------- sections ----------
 function progress(){const done=store("vl-done")||[],pct=Math.round(100*META.lesson/META.total);
  const label=META.review?`Phase ${META.stage} review · Lesson ${META.lesson} of ${META.total}`:`Phase ${META.stage} · Lesson ${META.lesson} of ${META.total}`;
- return `<div class="card"><div class="pips">${[1,2,3,4,5,6].map(i=>`<i class="${i<META.stage?"done":i===META.stage?"on":""}">Phase ${i}</i>`).join("")}</div>
+ return `<div class="card"><div class="pips">${[1,2,3,4,5,6].map(i=>`<i class="${i<META.stage?"done":i===META.stage?"on":""}"><span class="pl">Phase </span>${i}</i>`).join("")}</div>
  <b>${label}</b><div class="bar"><i style="width:${pct}%"></i></div><div class="muted" id="donec">${done.length} lesson${done.length===1?"":"s"} marked complete${done.includes(LESSON)?" · this one is done ✅":""}</div></div>`}
-function warm(){if(!WARM.length)return"";const rates=store("vl-rate")||{};
+function warm(){if(!WARM.length)return META.review?"":`<h2 class="sh">① Warm-up review</h2><div class="card muted">First lesson: nothing to review yet. From the next lesson, earlier phrases come back here.</div>`;const rates=store("vl-rate")||{};
  return `<h2 class="sh">① Warm-up review</h2><p class="shd">Read the English and try to say it in Vietnamese, then tap <b>Show</b> to check and hear it. Rate how well you knew it.</p><div class="card">${WARM.map((w,k)=>`<div class="wu" id="wu${k}"><div><div class="q">${w.en}</div><div class="a"><b>${w.jp}</b><div class="ro">${w.ro}</div></div></div>
  <div><button class="alt sm" onclick="wuShow(${k})">Show</button><span class="rate">${["😊","😐","😕"].map(e=>`<button class="${rates[w.ref||LESSON+":r"+k]===e?"sel":""}" onclick="wuRate(${k},'${e}',this)">${e}</button>`).join("")}</span></div></div>`).join("")}</div>`}
 function wuShow(k){const w=WARM[k];$("wu"+k).classList.add("open");play(w.ref||"r"+k,sayOf(w))}
