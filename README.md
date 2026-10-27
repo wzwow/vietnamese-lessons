@@ -26,7 +26,7 @@ whitespace collapsed, trimmed. Write each `order` question's `tiles` so that joi
 
 ## QA before publishing (mandatory)
 Before every push:
-1. `npm install` (once; installs Playwright) then `npm run qa` (serves the repo locally; or `node qa/qa.mjs <githack-base-url>`).
+1. `npm install` (once; installs Playwright) then `npm run qa` (serves the repo locally; or `node qa/qa.mjs <githack-base-url>` to test the live site; it clicks through githack's "External Content Notice" page).
    It checks, at mobile 390×844 and desktop: no console errors / failed requests, every phrase/word/vocab/grammar/dialogue/quiz/speak-back
    item has an mp3 that returns 200 `audio/mpeg`, every quiz answered correctly is marked Correct and reaches full marks, every wrong
    answer is rejected, word-order tiles display with single spaces, Reset clears, menu opens/closes, all links (nav, prev/next) resolve,

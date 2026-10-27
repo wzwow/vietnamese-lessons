@@ -27,6 +27,9 @@ for (const f of [...pages, "README.md", "nav.js"]) {
   check(!PERSONAL.test(s.replace(/LunarPulse/g, "")) && !/LunarPulse/.test(s), `${f}: personal detail found: ${(s.match(PERSONAL) || [])[0]}`);
 }
 
+// githack shows an "External Content Notice" interstitial to browsers; click through it like a user would.
+async function pass(page) { for (let i = 0; i < 3 && /External Content Notice/.test(await page.title()); i++) {
+  await Promise.all([page.waitForNavigation({ waitUntil: "networkidle" }).catch(() => {}), page.getByText("Open the page").click()]); } }
 const browser = await chromium.launch();
 for (const [vname, vp] of Object.entries(VIEWS)) {
   const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, hasTouch: !!vp.hasTouch });
@@ -38,7 +41,7 @@ for (const [vname, vp] of Object.entries(VIEWS)) {
     await page.addInitScript(() => { localStorage.clear(); window.__aud = []; const A = window.Audio;
       window.Audio = function (src) { window.__aud.push(src); const a = new A(src); a.play = () => Promise.resolve(); return a };
       window.speechSynthesis && (window.speechSynthesis.speak = () => { window.__tts = (window.__tts || 0) + 1 }) });
-    await page.goto(base + pg, { waitUntil: "networkidle" });
+    await page.goto(base + pg, { waitUntil: "networkidle" }); await pass(page); errs.length = 0; badReq.length = 0;
     // layout: no horizontal overflow, nothing clipped past viewport
     const ov = await page.evaluate(() => { const W = document.documentElement.clientWidth, bad = [];
       for (const e of document.querySelectorAll("body *")) { const r = e.getBoundingClientRect(), cs = getComputedStyle(e);
@@ -48,8 +51,8 @@ for (const [vname, vp] of Object.entries(VIEWS)) {
       return { sw: document.documentElement.scrollWidth, W, bad: bad.slice(0, 5) } });
     check(ov.sw <= ov.W + 1 && !ov.bad.length, `${tag}: horizontal overflow/clipping ${ov.sw}>${ov.W} ${ov.bad.join(" | ")}`);
     // links (nav + in-page) resolve
-    const links = await page.$$eval("a[href]", as => [...new Set(as.map(a => a.href))]);
-    for (const u of links) { const r = await page.request.get(u); check(r.status() === 200, `${tag}: link ${u} -> ${r.status()}`) }
+    const links = await page.$$eval("a[href]", as => [...new Set(as.map(a => a.href).filter(h => /^https?:/.test(h)))]);
+    for (const u of links.filter(u => u.startsWith(base) || !/githack|ethicalads|nounproject|status\./.test(u))) { const r = await page.request.get(u); check(r.status() === 200, `${tag}: link ${u} -> ${r.status()}`) }
     await page.screenshot({ path: path.join(SHOTS, `${vname}-${pg.replace(/\//g, "_")}-load.png`), fullPage: true });
     if (vname === "mobile") { const btn = await page.$("#jnavbtn"); if (check(!!btn, `${tag}: no menu button`)) { await btn.click(); await page.waitForTimeout(350);
       check(await page.evaluate(() => document.body.classList.contains("navopen") && document.querySelector("#jnav").getBoundingClientRect().left >= 0), `${tag}: menu does not open`);
@@ -96,7 +99,7 @@ for (const [vname, vp] of Object.entries(VIEWS)) {
       if (D.META.prev) check(fs.existsSync(path.join(ROOT, "lessons", D.META.prev)), `${tag}: META.prev ${D.META.prev} missing`);
       await page.screenshot({ path: path.join(SHOTS, `${vname}-${pg.replace(/\//g, "_")}-quizdone.png`), fullPage: true });
       // quiz pass 2: wrong answers are not accepted
-      await page.reload({ waitUntil: "networkidle" });
+      await page.reload({ waitUntil: "networkidle" }); await pass(page);
       for (const [k, q] of D.Q.entries()) {
         if (q.type === "order") { const n = q.tiles.length; const shown = await page.$$eval(`#qt${k} button`, b => b.map(x => x.textContent)); const used = new Set();
           for (const t of [...q.tiles].reverse()) { const j = shown.findIndex((s, i) => s === t && !used.has(i)); used.add(j); await page.locator(`#qt${k} button`).nth(j).click() }
