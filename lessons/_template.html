@@ -88,7 +88,7 @@ function speak(t,r=.85,done){const u=new SpeechSynthesisUtterance(t);u.lang="vi-
 function play(f,t,r=.9,done,keep){if(!keep)stopAll();if(cur){cur.pause()}speechSynthesis.cancel();
  const a=new Audio(A(f));cur=a;let fb=false;const fall=()=>{if(!fb){fb=true;speak(t,r,done)}};
  a.onended=()=>{if(!fb&&done)done()};a.onerror=fall;a.play().catch(fall)}
-const norm=s=>s.toLowerCase().replace(/[?!.,…"']/g," ").trim();
+const norm=s=>String(s).normalize("NFC").toLowerCase().replace(/\s+([?!.,…:;])/g,"$1").replace(/[?!.,…:;"'“”‘’()]/g," ").replace(/\s+/g," ").trim();
 function score(heard,target){const t=norm(target).split(/\s+/).filter(Boolean),h=norm(heard).split(/\s+/);let m=0;for(const w of t)if(h.includes(w))m++;return t.length?Math.round(100*m/t.length):0}
 function mic(target,el,after){const R=window.SpeechRecognition||window.webkitSpeechRecognition;
  if(!R){el.textContent="Speech recognition isn't supported in this browser. Try Chrome.";return}
@@ -140,7 +140,7 @@ function qMark(k,ok){if(qDone[k])return;qDone[k]=1;if(ok)qRight++;$("qr"+k).inne
  if(n===Q.length){const b=store("vl-quiz")||{};b[LESSON]=Math.max(b[LESSON]||0,qRight);store("vl-quiz",b);showBest()}}
 function showBest(){const b=(store("vl-quiz")||{})[LESSON];if(b!=null&&$("qbest"))$("qbest").textContent=`Best saved score: ${b} / ${Q.length}`}
 function answer(k,j,b){if(qDone[k])return;const ok=j===Q[k].answer;b.classList.add(ok?"right":"wrong");if(!ok)b.parentNode.children[Q[k].answer].classList.add("right");if(Q[k].say&&Q[k].type!=="listen")play("q"+k,Q[k].say);qMark(k,ok)}
-function tile(k,j,b){if(qDone[k])return;b.disabled=true;$("qa"+k).textContent+=shuffled[k][j]}
+function tile(k,j,b){if(qDone[k])return;b.disabled=true;const a=$("qa"+k);a.textContent=(a.textContent?a.textContent+" ":"")+shuffled[k][j]}
 function resetOrder(k){if(qDone[k])return;$("qa"+k).textContent="";$("qt"+k).querySelectorAll("button").forEach(b=>b.disabled=false)}
 function checkOrder(k){if(qDone[k])return;const ok=norm($("qa"+k).textContent)===norm(Q[k].answer);qMark(k,ok);if(Q[k].say)play("q"+k,Q[k].say)}
 function speakback(){if(!S.length)return"";return `<h2 class="sh">⑥ Speak-back practice</h2><p class="shd">Read the English, answer out loud with 🎤, then reveal the target answer.</p><div class="card">${S.map((s,k)=>`<div class="qq"><div class="qp">${k+1}. ${s.prompt}</div>

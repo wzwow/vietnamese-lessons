@@ -17,3 +17,9 @@ View via githack (GitHub Pages is not used): `https://rawcdn.githack.com/wzwow/v
 5. Share pinned URLs: `https://rawcdn.githack.com/wzwow/vietnamese-lessons/<new-sha>/lessons/lesson-N.html`.
 
 Progress, quiz scores and warm-up ratings are stored in the browser's `localStorage` (keys `vl-*`).
+
+## Word-order quiz & answer checking
+Unlike Japanese, Vietnamese words are separated by spaces. Tapped `order` tiles are joined with a single space, and every check
+(word order, speak-back scoring) goes through `norm()`: Unicode NFC, lower-case, punctuation removed (spaces before punctuation ignored),
+whitespace collapsed, trimmed. Write each `order` question's `tiles` so that joining them with spaces gives `answer`
+(punctuation may stay attached to a tile, e.g. `"Xin chào,"`). Speak-back scoring counts matching words.
