@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate neural Vietnamese audio for a lesson page.
 After generating audio, add the lesson to NAV in nav.js and a card in index.html (see README.md).
-Usage: python3 make_audio.py lesson-N.html  [--voice vi-VN-NamMinhNeural] [--slow -35%]
+Usage: python3 make_audio.py lesson-N.html  [--voice vi-VN-HoaiMyNeural] [--slow -35%]
 Template lessons (lesson 4+, built from lessons/_template.html) keep all data between /*DATA*/ and /*END DATA*/;
 older lessons (1-3) only have `const P=[...]` and `const V=[...]`. Needs node. Writes to audio/<lesson-name>/:
   p{i}.mp3 (phrase, normal), p{i}_slow.mp3 (phrase, slow), p{i}_w{j}.mp3 (word part j),
@@ -47,7 +47,7 @@ async def tts(text, path, voice, rate):
 
 async def main():
     ap = argparse.ArgumentParser(); ap.add_argument("html")
-    ap.add_argument("--voice", default="vi-VN-NamMinhNeural"); ap.add_argument("--slow", default="-35%")
+    ap.add_argument("--voice", default="vi-VN-HoaiMyNeural"); ap.add_argument("--slow", default="-35%")
     ap.add_argument("--force", action="store_true"); a = ap.parse_args()
     name = os.path.splitext(os.path.basename(a.html))[0]
     out = os.path.join(os.path.dirname(os.path.abspath(a.html)), "audio", name); os.makedirs(out, exist_ok=True)

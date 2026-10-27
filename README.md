@@ -11,7 +11,7 @@ View via githack (GitHub Pages is not used): `https://rawcdn.githack.com/wzwow/v
    - `P` 4–5 phrases `{jp: Vietnamese, ro: pronunciation guide, en, parts:[[vi, guide, en]], note}`; `V` 5–6 sidebar vocab `[vi, guide, en]`;
      `G` grammar; `D` dialogue `[speaker|"you", vi, guide, en]`; `WARM` earlier phrases (`ref:"lesson-X:pI"` reuses audio); `Q` quiz; `S` speak-back.
    - Topic for lesson N comes from `plan.html`.
-2. Audio: `pip install edge-tts gTTS` then `python3 make_audio.py lessons/lesson-N.html` (male voice `vi-VN-NamMinhNeural`; writes `lessons/audio/lesson-N/*.mp3`).
+2. Audio: `pip install edge-tts gTTS` then `python3 make_audio.py lessons/lesson-N.html` (female voice `vi-VN-HoaiMyNeural`; writes `lessons/audio/lesson-N/*.mp3`).
 3. Add a line to `NAV` in `nav.js`, a card in `index.html`, set the previous lesson's `META.next`, and in `plan.html` bump `DONE` (in the progress card, mark the lesson ✅ with a link, move "next up").
 4. Commit and push to `main`; the mp3s are pushed directly with `git` (no unpack Action in this repo: the box's gh token lacks the `workflow` scope needed to add one, and it isn't needed).
 5. Share pinned URLs: `https://rawcdn.githack.com/wzwow/vietnamese-lessons/<new-sha>/lessons/lesson-N.html`.
