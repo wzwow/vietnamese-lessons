@@ -82,7 +82,8 @@ const A=f=>f.includes(":")?`audio/${f.split(":")[0]}/${f.split(":")[1]}.mp3`:`au
 const store=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
 let cur,seq=0;
 function stopAll(){seq++;if(cur){cur.pause();cur=null}speechSynthesis.cancel();document.querySelectorAll(".playing").forEach(e=>e.classList.remove("playing"))}
-function speak(t,r=.85,done){const u=new SpeechSynthesisUtterance(t);u.lang="vi-VN";u.rate=r;if(done)u.onend=done;speechSynthesis.speak(u)}
+function viVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^vi/i.test(v.lang));return vs.find(v=>/nam ?minh|male|\bman\b|nam\b/i.test(v.name)&&!/female/i.test(v.name))||vs[0]||null}
+function speak(t,r=.85,done){const u=new SpeechSynthesisUtterance(t);u.lang="vi-VN";const vv=viVoice();if(vv)u.voice=vv;u.rate=r;if(done)u.onend=done;speechSynthesis.speak(u)}
 function play(f,t,r=.9,done,keep){if(!keep)stopAll();if(cur){cur.pause()}speechSynthesis.cancel();
  const a=new Audio(A(f));cur=a;let fb=false;const fall=()=>{if(!fb){fb=true;speak(t,r,done)}};
  a.onended=()=>{if(!fb&&done)done()};a.onerror=fall;a.play().catch(fall)}

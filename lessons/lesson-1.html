@@ -55,22 +55,22 @@ const P = [
   {jp:"ma · má · mà · mả · mã · mạ", ro:"the six tones in a row", en:"ghost · mother · but · tomb · horse · rice seedling", say:"ma, má, mà, mả, mã, mạ",
    parts:[["ma","ngang: flat, level, mid pitch","ghost"],["má","sắc: rises sharply, like an excited “ma?!”","mother"],["mà","huyền: falls low and relaxed, like a sigh","but"],["mả","hỏi: dips down then up, like a question “ma?”","tomb"],["mã","ngã: rises with a break/creak in the middle","horse"],["mạ","nặng: short, heavy, drops and stops abruptly","rice seedling"]],
    note:"Same syllable, six meanings. Tap each tile and copy the pitch. The mark tells you the tone: none = ngang, ´ = sắc, ` = huyền, ̉ (hook) = hỏi, ~ = ngã, dot below = nặng."},
-  {jp:"Xin chào", ro:"sin chow", en:"Hello.", parts:[["xin","sin","please / (polite)"],["chào","chow","greet"]], note:"Works any time of day with anyone. Example: “Xin chào, tôi là Lunar.” Hello, I'm Lunar."},
+  {jp:"Xin chào", ro:"sin chow", en:"Hello.", parts:[["xin","sin","please / (polite)"],["chào","chow","greet"]], note:"Works any time of day with anyone. Example: “Xin chào, tôi là Minh.” Hello, I'm Minh."},
   {jp:"Cảm ơn", ro:"gahm uhn", en:"Thank you.", parts:[["cảm","gahm (hỏi tone, dips)","feel"],["ơn","uhn","favour"]], note:"Example: “Cảm ơn bạn nhiều!” Thank you so much!"},
   {jp:"Không sao", ro:"khohm sow", en:"No problem.", parts:[["không","khohm","not / no"],["sao","sow","matter / why"]], note:"Answer to thanks or an apology. Example: “Không sao đâu.” It's no problem at all."},
 ];
 const V = [["ma","ma — ngang","ghost"],["má","má — sắc","mother"],["mà","mà — huyền","but"],["mả","mả — hỏi","tomb"],["mã","mã — ngã","horse"],["mạ","mạ — nặng","rice seedling"]];
 const G = {pattern:"Xin chào, tôi là + name", explain:"<b>tôi</b> = I, <b>là</b> = am/is. Put your name after là to introduce yourself. Polite thanks: Cảm ơn + bạn (you) + nhiều (a lot).",
-  examples:[["Xin chào, tôi là Lunar.","sin chow, toy lah Lunar","Hello, I'm Lunar."],["Cảm ơn bạn nhiều!","gahm uhn bahn nyew","Thank you so much!"],["Không sao đâu.","khohm sow dow","It's no problem at all."]],
+  examples:[["Xin chào, tôi là Minh.","sin chow, toy lah ming","Hello, I'm Minh."],["Cảm ơn bạn nhiều!","gahm uhn bahn nyew","Thank you so much!"],["Không sao đâu.","khohm sow dow","It's no problem at all."]],
   mistake:"Saying “cam on” flat sounds wrong. cảm has the dipping hỏi tone: let your voice dip and come back up."};
 const DTITLE = "Meeting someone at a café.";
-const D = [["Mai","Xin chào!","sin chow","Hello!"],["you","Xin chào, tôi là Lunar.","sin chow, toy lah Lunar","Hello, I'm Lunar."],["Mai","Cảm ơn bạn nhiều!","gahm uhn bahn nyew","Thanks a lot!"],["you","Không sao đâu.","khohm sow dow","No problem at all."]];
+const D = [["Mai","Xin chào!","sin chow","Hello!"],["you","Xin chào, tôi là Minh.","sin chow, toy lah ming","Hello, I'm Minh."],["Mai","Cảm ơn bạn nhiều!","gahm uhn bahn nyew","Thanks a lot!"],["you","Không sao đâu.","khohm sow dow","No problem at all."]];
 const Q = [
   {type:"choose", prompt:"Which tone sounds like a question (dips down then up)?", choices:["sắc (má)","hỏi (mả)","nặng (mạ)","huyền (mà)"], answer:1, say:"mả"},
   {type:"listen", prompt:"Listen. Which word is it?", say:"má", choices:["ma (ghost)","má (mother)","mà (but)","mạ (rice seedling)"], answer:1},
   {type:"listen", prompt:"Listen. What does it mean?", say:"Cảm ơn bạn nhiều!", choices:["Hello!","No problem.","Thank you so much!"], answer:2},
   {type:"choose", prompt:"Which word means “horse”?", choices:["mã","mả","má"], answer:0, say:"mã"},
-  {type:"order", prompt:"Put the words in order: “Hello, I'm Lunar.”", tiles:["Xin chào,","tôi","là","Lunar."], answer:"Xin chào, tôi là Lunar.", say:"Xin chào, tôi là Lunar."},
+  {type:"order", prompt:"Put the words in order: “Hello, I'm Minh.”", tiles:["Xin chào,","tôi","là","Minh."], answer:"Xin chào, tôi là Minh.", say:"Xin chào, tôi là Minh."},
 ];
 const S = [{prompt:"Say hello.", jp:"Xin chào.", ro:"sin chow"},{prompt:"Thank someone a lot.", jp:"Cảm ơn bạn nhiều!", ro:"gahm uhn bahn nyew"},{prompt:"Say “no problem at all”.", jp:"Không sao đâu.", ro:"khohm sow dow"}];
 /*END DATA*/
@@ -80,7 +80,8 @@ const A=f=>f.includes(":")?`audio/${f.split(":")[0]}/${f.split(":")[1]}.mp3`:`au
 const store=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
 let cur,seq=0;
 function stopAll(){seq++;if(cur){cur.pause();cur=null}speechSynthesis.cancel();document.querySelectorAll(".playing").forEach(e=>e.classList.remove("playing"))}
-function speak(t,r=.85,done){const u=new SpeechSynthesisUtterance(t);u.lang="vi-VN";u.rate=r;if(done)u.onend=done;speechSynthesis.speak(u)}
+function viVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^vi/i.test(v.lang));return vs.find(v=>/nam ?minh|male|\bman\b|nam\b/i.test(v.name)&&!/female/i.test(v.name))||vs[0]||null}
+function speak(t,r=.85,done){const u=new SpeechSynthesisUtterance(t);u.lang="vi-VN";const vv=viVoice();if(vv)u.voice=vv;u.rate=r;if(done)u.onend=done;speechSynthesis.speak(u)}
 function play(f,t,r=.9,done,keep){if(!keep)stopAll();if(cur){cur.pause()}speechSynthesis.cancel();
  const a=new Audio(A(f));cur=a;let fb=false;const fall=()=>{if(!fb){fb=true;speak(t,r,done)}};
  a.onended=()=>{if(!fb&&done)done()};a.onerror=fall;a.play().catch(fall)}
