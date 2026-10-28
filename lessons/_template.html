@@ -48,35 +48,36 @@ body.noro .dl .ro{display:none}body.noen .dl .den{display:none}
 <script>
 /*DATA*/
 // ===== LESSON DATA: copy this file to lessons/lesson-N.html and change only this block. =====
-// Where content comes from: plan.html → the week's card (Grammar, Vocab themes, Target phrases) + "Lesson page design".
+// Field names are shared with the engine: jp = Vietnamese text, ro = simple pronunciation guide (shown/hidden by "Hide guide").
+// Topic for lesson N comes from plan.html. No personalization: generic names only (Minh, Mai, Lan).
 const LESSON = "lesson-N";            // file name without .html; audio lives in audio/lesson-N/
 const TITLE = "Lesson N: Title";
 const SUB = "One-line description of today's theme.";
-// stage/week/lesson from plan.html (week n = lessons 7n-6..7n). review:true on lessons 7,14,21… (warm-up + quiz only).
+// stage = phase 1-6 (lessons 10p-9..10p). review:true on every 5th lesson (warm-up + quiz only).
 const META = {stage:1, week:1, lesson:0, total:60, review:false, prev:"lesson-N-1.html", prevTitle:"Lesson N-1", next:"lesson-N+1.html", nextTitle:"Lesson N+1"};
 // Warm-up: 3-4 earlier phrases. ref "lesson-X:pI" reuses that lesson's mp3; omit ref to generate rK.mp3.
 const WARM = [
-  {ref:"lesson-1:p1", jp:"はじめまして", ro:"Hajimemashite", en:"Nice to meet you."},
+  {ref:"lesson-1:p1", jp:"Xin chào", ro:"sin chow", en:"Hello."},
 ];
-// New phrases (4-5). parts: [jp, romaji, english, optional say-text for audio]. say: optional audio text (e.g. katakana for a name written in Latin letters).
+// New phrases (4-5). parts: [vi, guide, english, optional say-text for audio]. say: optional audio text.
 const P = [
-  {jp:"こんにちは", ro:"Konnichiwa", en:"Hello.", parts:[["こんにち","konnichi","today"],["は","wa","topic marker"]], note:"When and to whom you'd say it."},
+  {jp:"Xin chào", ro:"sin chow", en:"Hello.", parts:[["xin","sin","please (polite)"],["chào","chow","greet"]], note:"When and to whom you'd say it."},
 ];
-// Extra vocab sidebar (5-6): [jp, romaji, english, optional say-text]
-const V = [["名刺","meishi","business card"]];
-// Grammar: one pattern. examples: [jp, romaji, english, optional say-text]
-const G = {pattern:"X は Y です", explain:"Two or three sentences.", examples:[["これは名刺です。","Kore wa meishi desu.","This is a business card."]], mistake:"A common mistake and the fix."};
-// Mini dialogue (4-6 lines): [speaker ("you" or a name), jp, romaji, english, optional say-text]
+// Extra vocab sidebar (5-6): [vi, guide, english, optional say-text]
+const V = [["cà phê","gah feh","coffee"]];
+// Grammar: one pattern. examples: [vi, guide, english, optional say-text]
+const G = {pattern:"Tôi là + name", explain:"Two or three sentences.", examples:[["Tôi là Minh.","toy lah ming","I'm Minh."]], mistake:"A common mistake and the fix."};
+// Mini dialogue (4-6 lines): [speaker ("you" or a generic name), vi, guide, english, optional say-text]
 const DTITLE = "Scenario description.";
-const D = [["Client","はじめまして。","Hajimemashite.","Nice to meet you."],["you","はじめまして。","Hajimemashite.","Nice to meet you."]];
-// Quiz (4-5). types: listen (say = audio text, choose meaning) | choose | particle | order (tiles + answer string).
-// answer = index into choices (order: the joined string). Optional say on any type plays audio after answering.
+const D = [["Mai","Xin chào!","sin chow","Hello!"],["you","Xin chào, tôi là Minh.","sin chow, toy lah ming","Hello, I'm Minh."]];
+// Quiz (4-5). types: listen (say = audio text, choose meaning) | choose | order (tiles joined with spaces must equal answer).
+// answer = index into choices (order: the answer string). Optional say on any type plays audio after answering.
 const Q = [
-  {type:"listen", prompt:"Listen. What does it mean?", say:"こんにちは", choices:["Hello.","Thank you."], answer:0},
-  {type:"order", prompt:"Put the words in order: \"This is a business card.\"", tiles:["これは","名刺","です"], answer:"これは名刺です", say:"これは名刺です"},
+  {type:"listen", prompt:"Listen. What does it mean?", say:"Xin chào", choices:["Hello.","Thank you."], answer:0},
+  {type:"order", prompt:"Put the words in order: “I'm Minh.”", tiles:["Tôi","là","Minh."], answer:"Tôi là Minh.", say:"Tôi là Minh."},
 ];
-// Speak-back (3): English prompt → target Japanese (say: optional audio text)
-const S = [{prompt:"Say hello.", jp:"こんにちは。", ro:"Konnichiwa."}];
+// Speak-back (3): English prompt → target Vietnamese (say: optional audio text)
+const S = [{prompt:"Say hello.", jp:"Xin chào.", ro:"sin chow"}];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------
 const $=id=>document.getElementById(id);
@@ -118,7 +119,7 @@ ${G.examples.map((x,k)=>`<div class="ex" onclick="play('g${k}',G.examples[${k}][
 ${G.mistake?`<div class="mis">⚠️ <b>Common mistake:</b> ${G.mistake}</div>`:""}</div>`}
 let youMode=false;
 function dialogue(){if(!D.length)return"";return `<h2 class="sh">④ Mini dialogue</h2><p class="shd">${DTITLE||""}</p><div class="card">
-<button onclick="playAll()">▶ Play all</button><button class="alt" onclick="stopAll()">■ Stop</button><button class="alt" id="bro" onclick="document.body.classList.toggle('noro');this.textContent=document.body.classList.contains('noro')?'Show romaji':'Hide romaji'">Hide romaji</button><button class="alt" id="ben" onclick="document.body.classList.toggle('noen');this.textContent=document.body.classList.contains('noen')?'Show English':'Hide English'">Hide English</button><button class="alt" id="bym" onclick="toggleYou()">🎤 You speak mode</button>
+<button onclick="playAll()">▶ Play all</button><button class="alt" onclick="stopAll()">■ Stop</button><button class="alt" id="bro" onclick="document.body.classList.toggle('noro');this.textContent=document.body.classList.contains('noro')?'Show guide':'Hide guide'">Hide guide</button><button class="alt" id="ben" onclick="document.body.classList.toggle('noen');this.textContent=document.body.classList.contains('noen')?'Show English':'Hide English'">Hide English</button><button class="alt" id="bym" onclick="toggleYou()">🎤 You speak mode</button>
 <div style="margin-top:10px">${D.map((d,k)=>`<div class="dl ${d[0]==="you"?"you":""}" id="dl${k}"><div class="who">${d[0]==="you"?"You":d[0]}</div><div class="tx">
 <div class="show"><b>${d[1]}</b><div class="ro">${d[2]}</div></div>${d[0]==="you"?`<div class="yp hid">Your line: say it with 🎤 <button class="alt sm" onclick="mic(D[${k}][1],$('dr${k}'))">🎤</button> <button class="alt sm" onclick="revealLine(${k})">Show</button></div>`:""}
 <div class="den">${d[3]}</div><div class="res" id="dr${k}"></div></div><button class="alt sm" onclick="playLine(${k})">▶</button></div>`).join("")}</div></div>`}

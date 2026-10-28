@@ -52,7 +52,17 @@ async def main():
     name = os.path.splitext(os.path.basename(a.html))[0]
     out = os.path.join(os.path.dirname(os.path.abspath(a.html)), "audio", name); os.makedirs(out, exist_ok=True)
     jobs = []
-    D = load_data(a.html)
+    src = open(a.html, encoding="utf-8").read()
+    if "const SECTIONS" in src:   # reference page (reference/*.html): s{k}_i{j} items, s{k}_e{j} examples, q{k} quiz
+        code = re.search(r"/\*DATA\*/(.*?)/\*END DATA\*/", src, re.S).group(1) + "\nconsole.log(JSON.stringify({SECTIONS,Q}))"
+        R = json.loads(subprocess.check_output(["node", "-e", code]))
+        for k, sec in enumerate(R["SECTIONS"]):
+            jobs += [(x[3] if len(x) > 3 and x[3] else x[0], f"s{k}_i{j}.mp3", "-10%") for j, x in enumerate(sec["items"])]
+            jobs += [(x[0], f"s{k}_e{j}.mp3", "+0%") for j, x in enumerate(sec.get("examples", []))]
+        jobs += [(q["say"], f"q{k}.mp3", "+0%") for k, q in enumerate(R["Q"]) if q.get("say")]
+        D = {"P": [], "V": [], "WARM": [], "G": None, "D": [], "Q": [], "S": []}
+    else:
+        D = load_data(a.html)
     say = lambda arr, i: arr[i] if len(arr) > i and arr[i] else arr[0]   # list items: optional say-text at index i
     jobs += [(say(w, 3), f"v{k}.mp3", "-10%") for k, w in enumerate(D["V"])]
     for i, p in enumerate(D["P"]):

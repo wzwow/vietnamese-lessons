@@ -1,0 +1,148 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Common words</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f6f4ef;color:#222;max-width:760px;margin:0 auto;padding:32px 20px;line-height:1.45}
+h1{font-size:26px;margin:0 0 4px}p.sub{color:#666;margin:0 0 20px}h2.sh{font-size:20px;margin:30px 0 4px}p.shd{color:#666;margin:0 0 12px;font-size:14px}
+.card{background:#fff;border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:0 2px 10px #0001}
+.jp{font-size:30px;font-weight:600}.ro{color:#b5452b;font-style:italic;margin:4px 0}.en{font-size:17px;margin-bottom:12px}
+.parts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.part{background:#f1ede4;border-radius:10px;padding:8px 10px;text-align:center;cursor:pointer}
+.part b{display:block;font-size:18px}.part small{color:#666}
+.note{font-size:14px;color:#555;border-left:3px solid #e0c9a6;padding-left:10px;margin:10px 0}
+button{border:0;border-radius:999px;padding:10px 16px;margin:6px 6px 0 0;font-size:15px;cursor:pointer;background:#222;color:#fff}
+button.alt{background:#e9e4da;color:#222}button.sm{padding:6px 12px;font-size:14px}button:disabled{opacity:.55;cursor:default}
+.res{margin-top:10px;font-size:15px;min-height:20px}.ok{color:#2a7a3a}.bad{color:#b5452b}
+/* progress */
+.pips{display:flex;gap:6px;margin-bottom:10px}.pips i{flex:1;font-style:normal;text-align:center;font-size:12px;padding:5px 0;border-radius:999px;background:#f1ede4;color:#777}
+.pips i.on{background:#222;color:#fff}.pips i.done{background:#e0c9a6;color:#222}
+.bar{height:10px;background:#f1ede4;border-radius:999px;overflow:hidden;margin:8px 0 6px}.bar i{display:block;height:100%;background:#b5452b;border-radius:999px}
+.muted{color:#777;font-size:13px}
+@media(max-width:480px){.pips .pl{display:none}.pips i{font-size:13px}}
+/* warm-up */
+.wu{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #eee}.wu:last-child{border-bottom:0}
+.wu .q{font-size:17px}.wu .a{display:none;margin-top:4px}.wu.open .a{display:block}.wu .a b{font-size:21px}
+.rate button{background:#f1ede4;color:#222;padding:6px 10px;font-size:18px}.rate button.sel{background:#e0c9a6;outline:2px solid #b5452b}
+/* grammar */
+.pat{background:#222;color:#fff;border-radius:12px;padding:14px 16px;font-size:22px;font-weight:600;text-align:center;margin-bottom:12px}
+.ex{background:#f1ede4;border-radius:10px;padding:10px 12px;margin:8px 0;cursor:pointer}.ex b{font-size:19px}.ex .ro{margin:2px 0}
+.mis{font-size:14px;background:#fbeee9;border-radius:10px;padding:10px 12px;margin-top:12px}
+/* dialogue */
+.dl{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eee}.dl:last-child{border-bottom:0}
+.who{flex:0 0 58px;font-size:12px;font-weight:700;text-transform:uppercase;color:#777;padding-top:6px}.dl.you .who{color:#b5452b}
+.dl .tx{flex:1}.dl .tx b{font-size:19px}.dl .ro,.dl .den{font-size:14px}.dl .den{color:#555}
+.dl.playing{background:#fbf6ec;border-radius:10px}
+body.noro .dl .ro{display:none}body.noen .dl .den{display:none}
+.hid{display:none}.dl .yp{color:#777;font-style:italic}
+/* quiz */
+.qq{padding:12px 0;border-bottom:1px solid #eee}.qq:last-child{border-bottom:0}.qq .qp{font-size:17px;margin-bottom:6px}
+.ch button{background:#f1ede4;color:#222}.ch button.right{background:#2a7a3a;color:#fff}.ch button.wrong{background:#b5452b;color:#fff}
+.tiles button{background:#f1ede4;color:#222;font-size:18px}.ans{min-height:34px;font-size:20px;border-bottom:2px dashed #e0c9a6;margin:8px 0;padding:4px 0}
+.score{font-size:18px;font-weight:600;margin-top:10px}
+/* vocab */
+.vocab h2{font-size:17px;margin:0 0 10px}.vi{background:#f1ede4;border-radius:10px;padding:8px 10px;margin-bottom:8px;cursor:pointer}
+.vi:active{background:#e0c9a6}.vi b{font-size:19px}.vi .r{color:#b5452b;font-style:italic;font-size:13px}.vi small{display:block;color:#666;font-size:13px}
+@media(min-width:1200px){body{padding-right:260px!important;max-width:1280px!important}.vocab{position:fixed;top:24px;right:20px;width:220px;max-height:calc(100vh - 48px);overflow-y:auto;box-sizing:border-box;margin:0}}
+.fin{text-align:center}.fin a{color:#b5452b;font-weight:600}
+/* reference page */
+.toc{display:flex;flex-wrap:wrap;gap:6px}.toc a{background:#f1ede4;border-radius:999px;padding:6px 12px;color:#222;text-decoration:none;font-size:14px}
+.wi{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #eee}.wi button{margin:0;flex:0 0 auto}.wi b{font-size:20px}.wi .ro{display:inline;margin:0 0 0 6px}.wi small{display:block;color:#555;font-size:14px}
+body.noro .ro{display:none!important}
+.typ{font-size:18px;padding:8px 12px;border:2px solid #e0c9a6;border-radius:10px;width:100%;max-width:320px;box-sizing:border-box;margin:6px 0}
+a.sm{color:#b5452b;font-size:14px}h2.sh{scroll-margin-top:70px}
+</style></head><body>
+<div id="page"></div>
+<script>
+/*DATA*/
+const PAGE = "common-words";   // audio in reference/audio/common-words/  (sK_iJ = item J of section K, sK_eJ = example, qK = quiz)
+const TITLE = "Common words: numbers, money, units & time";
+const SUB = "Everyday words a beginner needs. Tap ▶ to hear each one. Guides follow the Northern (Hà Nội) accent; Southern differences are noted.";
+// Each section: items [vi, guide, english, optional say-text]; rules: list of HTML tips; examples [vi, guide, english]
+const SECTIONS = [
+ {id:"n0", title:"Numbers 0–10", items:[["không","khohm","0 zero"],["một","moht","1 one"],["hai","high","2 two"],["ba","bah","3 three"],["bốn","bohn","4 four"],["năm","nahm","5 five"],["sáu","sow","6 six"],["bảy","bay","7 seven"],["tám","tahm","8 eight"],["chín","cheen","9 nine"],["mười","muh-ee","10 ten"]],
+  examples:[["Tôi có hai con mèo.","toy gaw high gawn meh-oh","I have two cats."]]},
+ {id:"n11", title:"Numbers 11–20", items:[["mười một","muh-ee moht","11"],["mười hai","muh-ee high","12"],["mười ba","muh-ee bah","13"],["mười bốn","muh-ee bohn","14"],["mười lăm","muh-ee lahm","15 (not mười năm)"],["mười sáu","muh-ee sow","16"],["mười bảy","muh-ee bay","17"],["mười tám","muh-ee tahm","18"],["mười chín","muh-ee cheen","19"],["hai mươi","high muh-uh-ee","20"]],
+  examples:[["Lan mười tám tuổi.","lahn muh-ee tahm too-oy","Lan is eighteen."]]},
+ {id:"tens", title:"Tens", items:[["hai mươi mốt","high muh-uh-ee moht","21"],["hai mươi lăm","high muh-uh-ee lahm","25 (North also: hai mươi nhăm)"],["hai mươi tư","high muh-uh-ee tuh","24 (also hai mươi bốn)"],["ba mươi","bah muh-uh-ee","30"],["bốn mươi","bohn muh-uh-ee","40"],["năm mươi","nahm muh-uh-ee","50"],["sáu mươi","sow muh-uh-ee","60"],["bảy mươi","bay muh-uh-ee","70"],["tám mươi","tahm muh-uh-ee","80"],["chín mươi","cheen muh-uh-ee","90"]],
+  examples:[["Ba mươi mốt người.","bah muh-uh-ee moht ngoo-uh-ee","Thirty-one people."]]},
+ {id:"big", title:"Hundreds, thousands, millions", items:[["một trăm","moht chahm","100"],["một trăm linh năm","moht chahm ling nahm","105 (North)"],["một trăm lẻ năm","moht chahm leh nahm","105 (South)"],["một nghìn","moht ngeen","1,000 (North)"],["một ngàn","moht ngahn","1,000 (South)"],["mười nghìn","muh-ee ngeen","10,000"],["một trăm nghìn","moht chahm ngeen","100,000"],["một triệu","moht chee-yeh-oo","1,000,000 one million"],["một tỷ","moht tee","1,000,000,000 one billion"]],
+  rules:["<b>mười vs mươi:</b> <b>mười</b> (falling tone) is 10 on its own and in 11–19. From 20 up, “ten(s)” is <b>mươi</b> (flat tone): hai mươi = 20.",
+   "<b>mốt:</b> 1 after mươi becomes <b>mốt</b>: hai mươi mốt (21), ba mươi mốt (31). But 11 stays <b>mười một</b>.",
+   "<b>lăm / nhăm:</b> 5 after mười or mươi becomes <b>lăm</b>: mười lăm (15), hai mươi lăm (25). In the North, 25, 35… are also often said <b>nhăm</b> (hai mươi nhăm). 5 on its own, or after trăm/nghìn, stays <b>năm</b>.",
+   "<b>tư:</b> 4 after mươi is often <b>tư</b>: hai mươi tư (24).",
+   "<b>linh / lẻ:</b> a zero in the tens place is read <b>linh</b> (North) or <b>lẻ</b> (South): 105 = một trăm linh năm / một trăm lẻ năm.",
+   "<b>nghìn vs ngàn:</b> both mean 1,000. <b>nghìn</b> is Northern, <b>ngàn</b> is Southern.",
+   "Vietnamese writes 1.000 with a dot and 1,5 with a comma: the opposite of English."],
+  examples:[["Hai nghìn năm trăm.","high ngeen nahm chahm","2,500."],["Năm triệu người.","nahm chee-yeh-oo ngoo-uh-ee","Five million people."]]},
+ {id:"money", title:"Money", items:[["tiền","tee-uhn","money"],["đồng","dohm","đồng (₫, the currency)"],["nghìn đồng","ngeen dohm","thousand đồng"],["năm mươi nghìn","nahm muh-uh-ee ngeen","50,000 (written 50k)"],["Bao nhiêu tiền?","bow nyew tee-uhn","How much (money)?"],["Đắt quá!","daht kwah","Too expensive! (South: Mắc quá!)"],["rẻ","zeh (South: reh)","cheap"],["trả tiền","chah tee-uhn","to pay"],["tiền mặt","tee-uhn maht","cash"],["thẻ","teh","card"]],
+  rules:["Prices are often written with <b>k</b> for thousand: <b>50k</b> = 50.000₫, said <b>năm mươi nghìn</b> (or casually <b>năm chục</b>). People usually drop “đồng”."],
+  examples:[["Cái này bao nhiêu tiền?","gai nai bow nyew tee-uhn","How much is this?"],["Ba mươi nghìn đồng.","bah muh-uh-ee ngeen dohm","Thirty thousand đồng."],["Tôi trả bằng thẻ được không?","toy chah bahng teh duh-uhk khohm","Can I pay by card?"]]},
+ {id:"units", title:"Units & counting words", items:[["cái","gai","classifier for most things"],["chiếc","chee-uhk","classifier for single items, vehicles"],["con","gawn","classifier for animals"],["cân / ký","guhn / kee","kilogram (cân North, ký South)"],["gam","gahm","gram"],["lạng","lahng","100 grams (North)"],["lít","leet","litre"],["mét","meht","metre"],["cây số / ki-lô-mét","gay soh / kee-loh-meht","kilometre"],["xen-ti-mét","sen-tee-meht","centimetre"]],
+  rules:["Counting: number + classifier + noun: <b>hai cái bánh</b> (two cakes), <b>một chiếc xe</b> (one vehicle), <b>ba con chó</b> (three dogs)."],
+  examples:[["Cho tôi một cân xoài.","chaw toy moht guhn swai","A kilo of mangoes, please."],["Còn năm cây số nữa.","gawn nahm gay soh nuh-uh","Five more kilometres to go."]]},
+ {id:"time", title:"Time", items:[["giờ","zuh","hour / o'clock"],["phút","foot","minute"],["giây","zay","second"],["rưỡi","zuh-uh-ee","half (past)"],["Mấy giờ rồi?","may zuh zoy","What time is it?"],["sáng","sahng","morning"],["trưa","chuh-uh","noon, midday"],["chiều","chee-yeh-oo","afternoon"],["tối","toy","evening"],["đêm","dem","night"]],
+  examples:[["Bây giờ là bảy giờ sáng.","bay zuh lah bay zuh sahng","It's seven in the morning now."],["Ba giờ rưỡi chiều.","bah zuh zuh-uh-ee chee-yeh-oo","Half past three in the afternoon."],["Mười giờ mười lăm phút.","muh-ee zuh muh-ee lahm foot","Ten fifteen."]]},
+ {id:"days", title:"Days of the week", items:[["thứ Hai","tuh high","Monday"],["thứ Ba","tuh bah","Tuesday"],["thứ Tư","tuh tuh","Wednesday (tư, not bốn)"],["thứ Năm","tuh nahm","Thursday"],["thứ Sáu","tuh sow","Friday"],["thứ Bảy","tuh bay","Saturday"],["Chủ nhật","choo nyuht","Sunday"],["hôm nay","hohm nai","today"],["ngày mai","ngai mai","tomorrow"],["hôm qua","hohm kwah","yesterday"]],
+  rules:["Days are numbered from Monday = <b>thứ Hai</b> (“second day”). Sunday is <b>Chủ nhật</b>."],
+  examples:[["Hôm nay là thứ Sáu.","hohm nai lah tuh sow","Today is Friday."]]},
+ {id:"months", title:"Months & dates", items:[["tháng Một","tahng moht","January (also tháng Giêng)"],["tháng Hai","tahng high","February"],["tháng Ba","tahng bah","March"],["tháng Tư","tahng tuh","April (tư, not bốn)"],["tháng Năm","tahng nahm","May"],["tháng Sáu","tahng sow","June"],["tháng Bảy","tahng bay","July"],["tháng Tám","tahng tahm","August"],["tháng Chín","tahng cheen","September"],["tháng Mười","tahng muh-ee","October"],["tháng Mười Một","tahng muh-ee moht","November"],["tháng Mười Hai","tahng muh-ee high","December"],["ngày","ngai","day, date"],["năm","nahm","year"]],
+  rules:["Dates go day → month → year: <b>ngày 5 tháng 3 năm 2025</b> = 5 March 2025 (written 5/3/2025)."],
+  examples:[["Hôm nay là ngày mười lăm tháng Tám.","hohm nai lah ngai muh-ee lahm tahng tahm","Today is the 15th of August."]]},
+ {id:"ord", title:"Ordinals", items:[["thứ nhất","tuh nyuht","first (not thứ một)"],["thứ hai","tuh high","second"],["thứ ba","tuh bah","third"],["thứ tư","tuh tuh","fourth (not thứ bốn)"],["thứ năm","tuh nahm","fifth"],["thứ mười","tuh muh-ee","tenth"],["cuối cùng","koo-oy goong","last"]],
+  rules:["Ordinal = <b>thứ</b> + number, except <b>thứ nhất</b> (1st) and <b>thứ tư</b> (4th)."],
+  examples:[["Đây là lần thứ nhất.","day lah luhn tuh nyuht","This is the first time."]]},
+ {id:"q", title:"Question words", items:[["gì","zee","what"],["ai","ai","who"],["đâu","dow","where"],["khi nào","khee now","when"],["tại sao","tai sow","why"],["bao nhiêu","bow nyew","how many / how much"],["mấy","may","how many (small numbers)"],["thế nào","teh now","how"]],
+  examples:[["Bạn tên là gì?","bahn ten lah zee","What's your name?"],["Nhà vệ sinh ở đâu?","nyah veh sing uh dow","Where is the toilet?"],["Bạn có mấy anh chị em?","bahn gaw may ahn chee em","How many siblings do you have?"]]},
+ {id:"qty", title:"Quantity words", items:[["nhiều","nyew","many, a lot"],["ít","eet","few, a little"],["một chút","moht choot","a little bit"],["tất cả","tuht gah","all"],["vài","vai","a few, several"],["mỗi","moh-ee","each, every"]],
+  examples:[["Tôi nói được một chút tiếng Việt.","toy noy duh-uhk moht choot tee-uhng vee-uht","I can speak a little Vietnamese."],["Tất cả là một trăm nghìn.","tuht gah lah moht chahm ngeen","That's 100,000 in total."]]},
+];
+// Quiz. types: listen | choose (answer = index) | type (accept = list of right answers, checked NFC-normalized, tone marks matter) | order (tiles joined with spaces = answer)
+const Q = [
+ {type:"listen", prompt:"Listen. Which number is it?", say:"hai mươi lăm", choices:["15","25","52","205"], answer:1},
+ {type:"listen", prompt:"Listen. What's the price?", say:"năm mươi nghìn đồng", choices:["5.000₫","50.000₫","500.000₫","15.000₫"], answer:1},
+ {type:"choose", prompt:"How do you say 21?", choices:["hai mươi một","hai mười một","hai mươi mốt"], answer:2, say:"hai mươi mốt"},
+ {type:"choose", prompt:"How is 105 read in the North?", choices:["một trăm linh năm","một trăm năm","một trăm mươi lăm"], answer:0, say:"một trăm linh năm"},
+ {type:"type", prompt:"Type 15 in Vietnamese (with tone marks).", accept:["mười lăm"], say:"mười lăm"},
+ {type:"listen", prompt:"Listen. Which day is it?", say:"thứ Tư", choices:["Monday","Tuesday","Wednesday","Thursday"], answer:2},
+ {type:"choose", prompt:"Which word means “fourth”?", choices:["thứ bốn","thứ tư","thứ nhất"], answer:1, say:"thứ tư"},
+ {type:"type", prompt:"Type the Vietnamese for “cash”.", accept:["tiền mặt"], say:"tiền mặt"},
+ {type:"order", prompt:"Put the words in order: “How much is this?”", tiles:["Cái","này","bao nhiêu","tiền?"], answer:"Cái này bao nhiêu tiền?", say:"Cái này bao nhiêu tiền?"},
+ {type:"listen", prompt:"Listen. What time is it?", say:"Ba giờ rưỡi chiều.", choices:["3:30 pm","3:30 am","2:30 pm","3:15 pm"], answer:0},
+];
+/*END DATA*/
+// ---------- reference-page engine (edit the data block above, not this) ----------
+const $=id=>document.getElementById(id);
+const A=f=>`audio/${PAGE}/${f}.mp3`;
+const store=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
+let cur;
+function viVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^vi/i.test(v.lang));return vs.find(v=>/hoai ?my|female|woman|linh|an\b/i.test(v.name))||vs[0]||null}
+function speak(t){const u=new SpeechSynthesisUtterance(t);u.lang="vi-VN";u.rate=.85;const vv=viVoice();if(vv)u.voice=vv;speechSynthesis.speak(u)}
+function play(f,t){if(cur)cur.pause();speechSynthesis.cancel();const a=new Audio(A(f));cur=a;let fb=false;const fall=()=>{if(!fb){fb=true;speak(t)}};a.onerror=fall;a.play().catch(fall)}
+const norm=s=>String(s).normalize("NFC").toLowerCase().replace(/\s+([?!.,…:;])/g,"$1").replace(/[?!.,…:;"'“”‘’()]/g," ").replace(/\s+/g," ").trim();
+const esc=s=>String(s).replace(/'/g,"\\'");
+function sections(){return `<div class="card toc">${SECTIONS.map(s=>`<a href="#${s.id}">${s.title}</a>`).join("")}</div>`+SECTIONS.map((s,k)=>`<h2 class="sh" id="${s.id}">${s.title}</h2><div class="card">
+${s.items.map((x,j)=>`<div class="wi"><button class="sm" aria-label="Play ${x[0]}" onclick="play('s${k}_i${j}',SECTIONS[${k}].items[${j}][3]||SECTIONS[${k}].items[${j}][0])">▶</button><div><b>${x[0]}</b> <span class="ro">${x[1]}</span><small>${x[2]}</small></div></div>`).join("")}
+${(s.rules||[]).map(r=>`<div class="note">${r}</div>`).join("")}
+${(s.examples||[]).map((x,j)=>`<div class="ex" onclick="play('s${k}_e${j}',SECTIONS[${k}].examples[${j}][0])"><b>▶ ${x[0]}</b><div class="ro">${x[1]}</div><div>${x[2]}</div></div>`).join("")}</div>`).join("")}
+let qDone={},qRight=0;const shuffled={};
+function quiz(){return `<h2 class="sh" id="quiz">Practice quiz</h2><p class="shd">Instant feedback. Your best score is saved on this device.</p><div class="card">${Q.map((q,k)=>{let body="";
+ if(q.type==="order"){shuffled[k]=[...q.tiles].sort(()=>Math.random()-.5);body=`<div class="ans" id="qa${k}"></div><div class="tiles" id="qt${k}">${shuffled[k].map((t,j)=>`<button onclick="tile(${k},${j},this)">${t}</button>`).join("")}</div><button class="sm" onclick="checkOrder(${k})">Check</button><button class="alt sm" onclick="resetOrder(${k})">Reset</button>`}
+ else if(q.type==="type")body=`<input id="qi${k}" class="typ" lang="vi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type here" onkeydown="if(event.key==='Enter')checkType(${k})"><button class="sm" onclick="checkType(${k})">Check</button>`;
+ else body=(q.type==="listen"?`<button class="sm" onclick="play('q${k}',Q[${k}].say)">▶ Listen</button><br>`:"")+`<div class="ch">${q.choices.map((c,j)=>`<button onclick="answer(${k},${j},this)">${c}</button>`).join("")}</div>`;
+ return `<div class="qq"><div class="qp">${k+1}. ${q.prompt}</div>${body}<div class="res" id="qr${k}"></div></div>`}).join("")}
+ <div class="score" id="qscore">Score: 0 / ${Q.length}</div><div class="muted" id="qbest"></div><button class="alt sm" onclick="location.reload()">Try again</button></div>`}
+const right=q=>q.type==="order"?q.answer:q.type==="type"?q.accept[0]:q.choices[q.answer];
+function qMark(k,ok){if(qDone[k])return;qDone[k]=1;if(ok)qRight++;$("qr"+k).innerHTML=ok?'<span class="ok">Correct! ✓</span>':`<span class="bad">Not quite. Answer: <b>${right(Q[k])}</b></span>`;
+ if(Q[k].say&&Q[k].type!=="listen")play("q"+k,Q[k].say);
+ const n=Object.keys(qDone).length;$("qscore").textContent=`Score: ${qRight} / ${Q.length}`+(n===Q.length?(qRight===Q.length?" 🎉 Perfect!":" · finished"):"");
+ if(n===Q.length){const b=store("vl-quiz")||{};b["ref-"+PAGE]=Math.max(b["ref-"+PAGE]||0,qRight);store("vl-quiz",b);showBest()}}
+function showBest(){const b=(store("vl-quiz")||{})["ref-"+PAGE];if(b!=null)$("qbest").textContent=`Best saved score: ${b} / ${Q.length}`}
+function answer(k,j,b){if(qDone[k])return;const ok=j===Q[k].answer;b.classList.add(ok?"right":"wrong");if(!ok)b.parentNode.children[Q[k].answer].classList.add("right");qMark(k,ok)}
+function checkType(k){if(qDone[k])return;const v=$("qi"+k).value;if(!v.trim()){$("qr"+k).textContent="Type an answer first.";return}$("qi"+k).disabled=true;qMark(k,Q[k].accept.some(a=>norm(a)===norm(v)))}
+function tile(k,j,b){if(qDone[k])return;b.disabled=true;const a=$("qa"+k);a.textContent=(a.textContent?a.textContent+" ":"")+shuffled[k][j]}
+function resetOrder(k){if(qDone[k])return;$("qa"+k).textContent="";$("qt"+k).querySelectorAll("button").forEach(b=>b.disabled=false)}
+function checkOrder(k){if(qDone[k])return;qMark(k,norm($("qa"+k).textContent)===norm(Q[k].answer))}
+document.title=TITLE;
+$("page").innerHTML=`<h1>${TITLE}</h1><p class="sub">${SUB}</p><button class="alt sm" id="bro" onclick="document.body.classList.toggle('noro');this.textContent=document.body.classList.contains('noro')?'Show guide':'Hide guide'">Hide guide</button> <a class="sm" href="#quiz">Jump to quiz ↓</a>`+sections()+quiz();
+showBest();
+</script>
+<script src="../nav.js"></script>
+</body></html>

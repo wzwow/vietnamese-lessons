@@ -14,7 +14,8 @@ if (!base) {
 }
 if (!base.endsWith("/")) base += "/";
 const lessons = fs.readdirSync(path.join(ROOT, "lessons")).filter(f => /^lesson-\d+\.html$/.test(f)).sort((a, b) => parseInt(a.slice(7)) - parseInt(b.slice(7)));
-const pages = ["index.html", "plan.html", ...lessons.map(f => "lessons/" + f)];
+const refs = fs.existsSync(path.join(ROOT, "reference")) ? fs.readdirSync(path.join(ROOT, "reference")).filter(f => f.endsWith(".html")).sort() : [];
+const pages = ["index.html", "plan.html", ...refs.map(f => "reference/" + f), ...lessons.map(f => "lessons/" + f)];
 const VIEWS = { mobile: { width: 390, height: 844, isMobile: true, hasTouch: true }, desktop: { width: 1366, height: 900 } };
 let fails = 0, passes = 0; const log = [];
 const check = (ok, msg) => { ok ? passes++ : fails++; if (!ok) log.push("FAIL " + msg); return ok };
@@ -23,6 +24,7 @@ const PERSONAL = /lunar|singapore|designer|freelanc|ai art|ai video/i;
 // ---- static checks on source files ----
 for (const f of [...pages, "README.md", "nav.js"]) {
   const s = fs.readFileSync(path.join(ROOT, f), "utf8");
+  check(!/romaji/i.test(s) || f === "README.md", `${f}: mentions romaji (use "guide")`);
   check(s === s.normalize("NFC"), `${f}: not NFC-normalized`);
   check(!PERSONAL.test(s.replace(/LunarPulse/g, "")) && !/LunarPulse/.test(s), `${f}: personal detail found: ${(s.match(PERSONAL) || [])[0]}`);
 }
@@ -59,6 +61,39 @@ for (const [vname, vp] of Object.entries(VIEWS)) {
       await page.screenshot({ path: path.join(SHOTS, `${vname}-${pg.replace(/\//g, "_")}-menu.png`) }); await page.click("#jnavbg", { position: { x: 380, y: 400 } }); await page.waitForTimeout(350);
       check(await page.evaluate(() => !document.body.classList.contains("navopen") && document.querySelector("#jnav").getBoundingClientRect().right <= 0), `${tag}: menu does not close`) } }
     else check(await page.$$eval("#jnav a", a => a.length) >= 3, `${tag}: nav missing`);
+    if (pg.startsWith("reference/")) {
+      const R = await page.evaluate(() => ({ PAGE, SECTIONS, Q }));
+      const exp = []; R.SECTIONS.forEach((sec, k) => { sec.items.forEach((_, j) => exp.push(`s${k}_i${j}`)); (sec.examples || []).forEach((_, j) => exp.push(`s${k}_e${j}`)) });
+      R.Q.forEach((q, k) => { check(!!q.say, `${tag}: Q${k + 1} has no audio`); if (q.say) exp.push(`q${k}`) });
+      const url = f => new URL(`audio/${R.PAGE}/${f}.mp3`, page.url()).href;
+      check(await page.locator(".wi button").count() === R.SECTIONS.reduce((n, s) => n + s.items.length, 0), `${tag}: not every word has a play button`);
+      await page.evaluate(() => { for (const e of document.querySelectorAll(".wi button, .ex")) e.click() });
+      const used = await page.evaluate(() => window.__aud);
+      check(used.length === exp.length - R.Q.filter(q => q.say).length, `${tag}: clicked ${used.length} play controls`);
+      for (const u of used) check(exp.map(url).includes(new URL(u, page.url()).href), `${tag}: unexpected audio ${u}`);
+      if (vname === "mobile") for (const f of exp) { const r = await page.request.get(url(f));
+        check(r.status() === 200 && /audio\/mpeg/.test(r.headers()["content-type"] || "") && (await r.body()).length > 1000, `${tag}: audio ${f}.mp3 -> ${r.status()}`) }
+      await page.click("#bro"); check(/Show guide/.test(await page.textContent("#bro")) && !(await page.locator(".wi .ro").first().isVisible()), `${tag}: Hide guide toggle`); await page.click("#bro");
+      const run = async good => { for (const [k, q] of R.Q.entries()) {
+        if (q.type === "order") { const shown = await page.$$eval(`#qt${k} button`, b => b.map(x => x.textContent)); const usedI = new Set();
+          if (good) { await page.locator(`#qt${k} button`).first().click(); await page.locator(`.qq:has(#qt${k}) button:has-text("Reset")`).click();
+            check((await page.textContent(`#qa${k}`)) === "", `${tag}: Q${k + 1} reset`) }
+          for (const t of good ? q.tiles : [...q.tiles].reverse()) { const j = shown.findIndex((x, i) => x === t && !usedI.has(i)); usedI.add(j); await page.locator(`#qt${k} button`).nth(j).click() }
+          if (good) { const disp = await page.textContent(`#qa${k}`); check(disp === q.tiles.join(" "), `${tag}: Q${k + 1} displayed "${disp}"`) }
+          await page.locator(`.qq:has(#qt${k}) button:has-text("Check")`).click() }
+        else if (q.type === "type") { // good: type the answer in decomposed (NFD) form with extra spaces, like some mobile keyboards; bad: drop the tone marks
+          await page.fill(`#qi${k}`, good ? "  " + q.accept[0].normalize("NFD").toUpperCase() + " " : q.accept[0].normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+          await page.locator(`.qq:has(#qi${k}) button:has-text("Check")`).click() }
+        else await page.locator(`.qq:has(#qr${k}) .ch button`).nth(good ? q.answer : (q.answer + 1) % q.choices.length).click();
+        const t = await page.textContent(`#qr${k}`);
+        check(good ? /Correct/.test(t) : (!/Correct/.test(t) && /Not quite/.test(t)), `${tag}: Q${k + 1} ${good ? "right answer not accepted" : "wrong answer accepted"}: ${t}`) } };
+      await run(true);
+      const sc = await page.textContent("#qscore"); check(sc.includes(`${R.Q.length} / ${R.Q.length}`) && /Perfect/.test(sc), `${tag}: score "${sc}"`);
+      check(/Best saved score/.test(await page.textContent("#qbest")), `${tag}: best score not saved`);
+      await page.screenshot({ path: path.join(SHOTS, `${vname}-${pg.replace(/\//g, "_")}-quizdone.png`), fullPage: true });
+      await page.reload({ waitUntil: "networkidle" }); await pass(page); await run(false);
+      await page.screenshot({ path: path.join(SHOTS, `${vname}-${pg.replace(/\//g, "_")}-wrong-answers.png`), fullPage: true });
+    }
     if (pg.startsWith("lessons/")) {
       const D = await page.evaluate(() => ({ LESSON, META, P, V, WARM, G, D, Q, S }));
       // expected audio for every item

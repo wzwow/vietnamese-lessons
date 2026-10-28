@@ -2,6 +2,7 @@
 const NAV = [
   { title: "Home", href: "index.html" },
   { title: "Learning plan", href: "plan.html" },
+  { title: "Common words: numbers, money, units, time", href: "reference/common-words.html" },
   { title: "Lesson 1: The 6 tones & greetings", href: "lessons/lesson-1.html" },
   { title: "Lesson 2: Vowels", href: "lessons/lesson-2.html" },
   { title: "Lesson 3: Consonants", href: "lessons/lesson-3.html" },

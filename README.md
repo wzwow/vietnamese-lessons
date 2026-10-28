@@ -36,3 +36,7 @@ Before every push:
 4. Content review by hand (the script can't judge this): Vietnamese spelling and tone marks, pronunciation guides, English meanings,
    regional notes (e.g. má = mother is Southern; North uses mẹ), and that every quiz `answer` index is actually right.
 5. Only then commit and push, and check the githack URLs at the new sha return 200.
+
+## Reference pages (`reference/`)
+
+`reference/common-words.html` is a reference page (numbers, money, units, time, days, months, ordinals, question and quantity words) with a practice quiz. Edit only the `/*DATA*/ … /*END DATA*/` block (`SECTIONS` with `items [vi, guide, en, say?]`, `rules`, `examples`, and the quiz `Q`), then regenerate audio with `python3 make_audio.py reference/common-words.html` (HoaiMy; files go to `reference/audio/<page>/` as `s{k}_i{j}`, `s{k}_e{j}`, `q{k}`). Check the log for `gtts` lines: if edge-tts dropped out, delete those files and rerun so every clip is HoaiMy. Add new reference pages to `nav.js` and `index.html`; `npm run qa` picks up every `reference/*.html` automatically. Every page has a **Hide guide** button that hides the pronunciation guides.
