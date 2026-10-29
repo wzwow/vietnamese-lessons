@@ -6,6 +6,7 @@ const NAV = [
   { title: "Lesson 1: The 6 tones & greetings", href: "lessons/lesson-1.html" },
   { title: "Lesson 2: Vowels", href: "lessons/lesson-2.html" },
   { title: "Lesson 3: Consonants", href: "lessons/lesson-3.html" },
+  { title: "Lesson 4: Pronouns", href: "lessons/lesson-4.html" },
 ];
 (function () {
   const base = new URL(".", document.currentScript.src); // repo root, wherever it's hosted

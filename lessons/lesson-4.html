@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f6f4ef;color:#222;max-width:760px;margin:0 auto;padding:32px 20px;line-height:1.45}
+h1{font-size:26px;margin:0 0 4px}p.sub{color:#666;margin:0 0 20px}h2.sh{font-size:20px;margin:30px 0 4px}p.shd{color:#666;margin:0 0 12px;font-size:14px}
+.card{background:#fff;border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:0 2px 10px #0001}
+.jp{font-size:30px;font-weight:600}.ro{color:#b5452b;font-style:italic;margin:4px 0}.en{font-size:17px;margin-bottom:12px}
+.parts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.part{background:#f1ede4;border-radius:10px;padding:8px 10px;text-align:center;cursor:pointer}
+.part b{display:block;font-size:18px}.part small{color:#666}
+.note{font-size:14px;color:#555;border-left:3px solid #e0c9a6;padding-left:10px;margin:10px 0}
+button{border:0;border-radius:999px;padding:10px 16px;margin:6px 6px 0 0;font-size:15px;cursor:pointer;background:#222;color:#fff}
+button.alt{background:#e9e4da;color:#222}button.sm{padding:6px 12px;font-size:14px}button:disabled{opacity:.55;cursor:default}
+.res{margin-top:10px;font-size:15px;min-height:20px}.ok{color:#2a7a3a}.bad{color:#b5452b}
+/* progress */
+.pips{display:flex;gap:6px;margin-bottom:10px}.pips i{flex:1;font-style:normal;text-align:center;font-size:12px;padding:5px 0;border-radius:999px;background:#f1ede4;color:#777}
+.pips i.on{background:#222;color:#fff}.pips i.done{background:#e0c9a6;color:#222}
+.bar{height:10px;background:#f1ede4;border-radius:999px;overflow:hidden;margin:8px 0 6px}.bar i{display:block;height:100%;background:#b5452b;border-radius:999px}
+.muted{color:#777;font-size:13px}
+@media(max-width:480px){.pips .pl{display:none}.pips i{font-size:13px}}
+/* warm-up */
+.wu{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #eee}.wu:last-child{border-bottom:0}
+.wu .q{font-size:17px}.wu .a{display:none;margin-top:4px}.wu.open .a{display:block}.wu .a b{font-size:21px}
+.rate button{background:#f1ede4;color:#222;padding:6px 10px;font-size:18px}.rate button.sel{background:#e0c9a6;outline:2px solid #b5452b}
+/* grammar */
+.pat{background:#222;color:#fff;border-radius:12px;padding:14px 16px;font-size:22px;font-weight:600;text-align:center;margin-bottom:12px}
+.ex{background:#f1ede4;border-radius:10px;padding:10px 12px;margin:8px 0;cursor:pointer}.ex b{font-size:19px}.ex .ro{margin:2px 0}
+.mis{font-size:14px;background:#fbeee9;border-radius:10px;padding:10px 12px;margin-top:12px}
+/* dialogue */
+.dl{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eee}.dl:last-child{border-bottom:0}
+.who{flex:0 0 58px;font-size:12px;font-weight:700;text-transform:uppercase;color:#777;padding-top:6px}.dl.you .who{color:#b5452b}
+.dl .tx{flex:1}.dl .tx b{font-size:19px}.dl .ro,.dl .den{font-size:14px}.dl .den{color:#555}
+.dl.playing{background:#fbf6ec;border-radius:10px}
+body.noro .dl .ro{display:none}body.noen .dl .den{display:none}
+.hid{display:none}.dl .yp{color:#777;font-style:italic}
+/* quiz */
+.qq{padding:12px 0;border-bottom:1px solid #eee}.qq:last-child{border-bottom:0}.qq .qp{font-size:17px;margin-bottom:6px}
+.ch button{background:#f1ede4;color:#222}.ch button.right{background:#2a7a3a;color:#fff}.ch button.wrong{background:#b5452b;color:#fff}
+.tiles button{background:#f1ede4;color:#222;font-size:18px}.ans{min-height:34px;font-size:20px;border-bottom:2px dashed #e0c9a6;margin:8px 0;padding:4px 0}
+.score{font-size:18px;font-weight:600;margin-top:10px}
+/* vocab */
+.vocab h2{font-size:17px;margin:0 0 10px}.vi{background:#f1ede4;border-radius:10px;padding:8px 10px;margin-bottom:8px;cursor:pointer}
+.vi:active{background:#e0c9a6}.vi b{font-size:19px}.vi .r{color:#b5452b;font-style:italic;font-size:13px}.vi small{display:block;color:#666;font-size:13px}
+@media(min-width:1200px){body{padding-right:260px!important;max-width:1280px!important}.vocab{position:fixed;top:24px;right:20px;width:220px;max-height:calc(100vh - 48px);overflow-y:auto;box-sizing:border-box;margin:0}}
+.fin{text-align:center}.fin a{color:#b5452b;font-weight:600}
+</style></head><body>
+<div id="page"></div>
+<aside class="card vocab" id="vocab"></aside>
+<script>
+/*DATA*/
+const LESSON = "lesson-4";
+const TITLE = "Lesson 4: Pronouns";
+const SUB = "In Vietnamese, “I” and “you” depend on who is older — tôi, bạn, anh, chị, em in five everyday phrases.";
+const META = {stage:1, week:1, lesson:4, total:60, review:false, prev:"lesson-3.html", prevTitle:"Lesson 3: Consonants", next:"", nextTitle:""};
+const WARM = [
+  {ref:"lesson-1:p1", jp:"Xin chào", ro:"sin chow", en:"Hello."},
+  {ref:"lesson-3:p0", jp:"Bạn đi đâu?", ro:"bahn dee dow", en:"Where are you going?"},
+  {ref:"lesson-3:p3", jp:"Tôi không hiểu.", ro:"toy khohm hyew", en:"I don't understand."},
+];
+const P = [
+  {jp:"Tôi tên là Minh.", ro:"toy tayn lah ming", en:"My name is Minh.", parts:[["tôi","toy","I (neutral, polite)"],["tên","tayn","name"],["là","lah","is / am"],["Minh","ming","Minh (a name)"]], note:"tôi is the safe, neutral “I” — fine with strangers and in formal situations. Example: “Xin chào, tôi tên là Lan.” Hello, my name is Lan."},
+  {jp:"Bạn tên là gì?", ro:"bahn tayn lah zee", en:"What's your name?", parts:[["bạn","bahn","you (friend / peer)"],["tên","tayn","name"],["là","lah","is"],["gì","zee (North) · yee (South)","what"]], note:"bạn literally means “friend”; use it for people about your own age. Example: “Chào bạn! Bạn tên là gì?” Hi! What's your name?"},
+  {jp:"Anh khỏe không?", ro:"ahn khweh khohm", en:"How are you? (to an older man)", parts:[["anh","ahn","you (older man) · lit. older brother"],["khỏe","khweh","well / healthy"],["không","khohm","(question word)"]], note:"Swap the pronoun to fit the listener: “Chị khỏe không?” to an older woman, “Em khỏe không?” to someone younger, “Bạn khỏe không?” to a friend."},
+  {jp:"Em khỏe, cảm ơn chị.", ro:"em khweh, gahm uhn chee", en:"I'm fine, thank you. (younger person to an older woman)", parts:[["em","em","I (younger speaker) · lit. younger sibling"],["khỏe","khweh","well"],["cảm ơn","gahm uhn","thank you"],["chị","chee","you (older woman) · lit. older sister"]], note:"Pronoun pairs: if you call her chị, you call yourself em. Talking to an older man: “Em khỏe, cảm ơn anh.”"},
+  {jp:"Rất vui được gặp anh.", ro:"zuht vooy duh-uhk gahp ahn", en:"Nice to meet you. (to an older man)", parts:[["rất","zuht (North) · ruht (South)","very"],["vui","vooy","happy"],["được","duh-uhk","get to"],["gặp","gahp","meet"],["anh","ahn","you (older man)"]], note:"End with the right pronoun for the listener. Example: “Rất vui được gặp chị.” Nice to meet you (to an older woman)."},
+];
+const V = [["tôi","toy","I (neutral, polite)"],["bạn","bahn","you (friend / peer)"],["anh","ahn","older brother · you (older man)"],["chị","chee","older sister · you (older woman)"],["em","em","younger sibling · you / I (younger person)"],["khỏe","khweh","well / healthy"]];
+const G = {pattern:"anh / chị ↔ em · bạn ↔ tôi", explain:"Vietnamese has no single “I” and “you”. Pronouns are family words chosen by age and relationship: <b>anh</b> = older brother → an older man (or a man about your age, politely); <b>chị</b> = older sister → an older woman; <b>em</b> = younger sibling → someone younger than you; <b>bạn</b> = friend → a peer; <b>tôi</b> = a neutral, polite “I”. They work in <b>pairs</b>: if you call someone <b>anh</b> or <b>chị</b>, you call yourself <b>em</b> — and an older person talking to you says <b>anh</b> or <b>chị</b> to mean “I”.",
+  examples:[["Anh khỏe không?","ahn khweh khohm","How are you? (to an older man)"],["Chị khỏe không?","chee khweh khohm","How are you? (to an older woman)"],["Em khỏe không?","em khweh khohm","How are you? (to someone younger)"],["Em cảm ơn anh.","em gahm uhn ahn","Thank you. (younger person to an older man)"]],
+  mistake:"Don't call an older person em — it sounds rude. When unsure of someone's age, use tôi for yourself and anh or chị for the other person."};
+const DTITLE = "Meeting someone new.";
+const D = [["Minh","Xin chào! Anh tên là Minh.","sin chow! ahn tayn lah ming","Hello! My name is Minh. (anh = I, said by an older man)"],["you","Chào anh. Em tên là Lan.","chow ahn. em tayn lah lahn","Hi. My name is Lan."],["Minh","Rất vui được gặp em. Em khỏe không?","zuht vooy duh-uhk gahp em. em khweh khohm","Nice to meet you. How are you?"],["you","Em khỏe, cảm ơn anh.","em khweh, gahm uhn ahn","I'm fine, thank you."]];
+const Q = [
+  {type:"choose", prompt:"You're talking to an older woman. Which word do you use for “you”?", choices:["em","chị","anh"], answer:1, say:"chị"},
+  {type:"choose", prompt:"Which pronoun is the neutral, polite “I” — safe with strangers?", choices:["em","bạn","tôi"], answer:2, say:"tôi"},
+  {type:"listen", prompt:"Listen. What does it mean?", say:"Anh khỏe không?", choices:["How are you? (to an older man)","How are you? (to an older woman)","Nice to meet you."], answer:0},
+  {type:"listen", prompt:"Listen. What does it mean?", say:"Bạn tên là gì?", choices:["Where are you going?","What's your name?","I don't understand."], answer:1},
+  {type:"choose", prompt:"A younger person thanks an older man. Which is right?", choices:["Anh cảm ơn em.","Em cảm ơn anh.","Em cảm ơn chị."], answer:1, say:"Em cảm ơn anh."},
+  {type:"order", prompt:"Put the words in order: “Nice to meet you.” (to an older man)", tiles:["Rất","vui","được","gặp","anh."], answer:"Rất vui được gặp anh.", say:"Rất vui được gặp anh."},
+];
+const S = [{prompt:"Ask an older man “How are you?”", jp:"Anh khỏe không?", ro:"ahn khweh khohm"},{prompt:"Say “My name is Minh.”", jp:"Tôi tên là Minh.", ro:"toy tayn lah ming"},{prompt:"Say “Nice to meet you” to an older woman.", jp:"Rất vui được gặp chị.", ro:"zuht vooy duh-uhk gahp chee"}];
+/*END DATA*/
+// ---------- engine (shared by every lesson; edit data above, not below) ----------
+const $=id=>document.getElementById(id);
+const A=f=>f.includes(":")?`audio/${f.split(":")[0]}/${f.split(":")[1]}.mp3`:`audio/${LESSON}/${f}.mp3`;
+const store=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
+let cur,seq=0;
+function stopAll(){seq++;if(cur){cur.pause();cur=null}speechSynthesis.cancel();document.querySelectorAll(".playing").forEach(e=>e.classList.remove("playing"))}
+function viVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^vi/i.test(v.lang));return vs.find(v=>/hoai ?my|female|woman|linh|an\b/i.test(v.name))||vs[0]||null}
+function speak(t,r=.85,done){const u=new SpeechSynthesisUtterance(t);u.lang="vi-VN";const vv=viVoice();if(vv)u.voice=vv;u.rate=r;if(done)u.onend=done;speechSynthesis.speak(u)}
+function play(f,t,r=.9,done,keep){if(!keep)stopAll();if(cur){cur.pause()}speechSynthesis.cancel();
+ const a=new Audio(A(f));cur=a;let fb=false;const fall=()=>{if(!fb){fb=true;speak(t,r,done)}};
+ a.onended=()=>{if(!fb&&done)done()};a.onerror=fall;a.play().catch(fall)}
+const norm=s=>String(s).normalize("NFC").toLowerCase().replace(/\s+([?!.,…:;])/g,"$1").replace(/[?!.,…:;"'“”‘’()]/g," ").replace(/\s+/g," ").trim();
+function score(heard,target){const t=norm(target).split(/\s+/).filter(Boolean),h=norm(heard).split(/\s+/);let m=0;for(const w of t)if(h.includes(w))m++;return t.length?Math.round(100*m/t.length):0}
+function mic(target,el,after){const R=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!R){el.textContent="Speech recognition isn't supported in this browser. Try Chrome.";return}
+ stopAll();const r=new R();r.lang="vi-VN";el.textContent="Listening...";
+ r.onresult=e=>{const h=e.results[0][0].transcript,s=score(h,target);
+  el.innerHTML=`I heard: <b>${h}</b><br>`+(s>=70?`<span class="ok">Nice, that's about ${s}% of it. 🎉</span>`:`<span class="bad">Close, about ${s}%. Try the slow version and go again.</span>`);if(after)after(s)};
+ r.onerror=e=>{el.textContent="Mic error: "+e.error};r.start()}
+const sayOf=(o)=>o.say||o.jp;
+// ---------- sections ----------
+function progress(){const done=store("vl-done")||[],pct=Math.round(100*META.lesson/META.total);
+ const label=META.review?`Phase ${META.stage} review · Lesson ${META.lesson} of ${META.total}`:`Phase ${META.stage} · Lesson ${META.lesson} of ${META.total}`;
+ return `<div class="card"><div class="pips">${[1,2,3,4,5,6].map(i=>`<i class="${i<META.stage?"done":i===META.stage?"on":""}"><span class="pl">Phase </span>${i}</i>`).join("")}</div>
+ <b>${label}</b><div class="bar"><i style="width:${pct}%"></i></div><div class="muted" id="donec">${done.length} lesson${done.length===1?"":"s"} marked complete${done.includes(LESSON)?" · this one is done ✅":""}</div></div>`}
+function warm(){if(!WARM.length)return META.review?"":`<h2 class="sh">① Warm-up review</h2><div class="card muted">First lesson: nothing to review yet. From the next lesson, earlier phrases come back here.</div>`;const rates=store("vl-rate")||{};
+ return `<h2 class="sh">① Warm-up review</h2><p class="shd">Read the English and try to say it in Vietnamese, then tap <b>Show</b> to check and hear it. Rate how well you knew it.</p><div class="card">${WARM.map((w,k)=>`<div class="wu" id="wu${k}"><div><div class="q">${w.en}</div><div class="a"><b>${w.jp}</b><div class="ro">${w.ro}</div></div></div>
+ <div><button class="alt sm" onclick="wuShow(${k})">Show</button><span class="rate">${["😊","😐","😕"].map(e=>`<button class="${rates[w.ref||LESSON+":r"+k]===e?"sel":""}" onclick="wuRate(${k},'${e}',this)">${e}</button>`).join("")}</span></div></div>`).join("")}</div>`}
+function wuShow(k){const w=WARM[k];$("wu"+k).classList.add("open");play(w.ref||"r"+k,sayOf(w))}
+function wuRate(k,e,b){const r=store("vl-rate")||{};r[WARM[k].ref||LESSON+":r"+k]=e;store("vl-rate",r);b.parentNode.querySelectorAll("button").forEach(x=>x.classList.toggle("sel",x===b))}
+function phrases(){if(!P.length)return"";return `<h2 class="sh">② New phrases</h2><p class="shd">Tap a word to hear it. Press ▶ to hear the whole phrase, 🐢 for slow, then 🎤 and say it back.</p>`+P.map((p,i)=>`<div class="card"><div class="jp">${i+1}. ${p.jp}</div><div class="ro">${p.ro}</div><div class="en">${p.en}</div>
+<div class="parts">${p.parts.map((x,j)=>`<div class="part" onclick="play('p${i}_w${j}',P[${i}].parts[${j}][3]||P[${i}].parts[${j}][0])"><b>${x[0]}</b>${x[1]}<br><small>${x[2]}</small></div>`).join("")}</div>
+<div class="note">${p.note}</div>
+<button onclick="play('p${i}',sayOf(P[${i}]),.9)">▶ Play</button><button class="alt" onclick="play('p${i}_slow',sayOf(P[${i}]),.5)">🐢 Slow</button><button class="alt" onclick="mic(P[${i}].jp,$('r${i}'))">🎤 Say it back</button>
+<div class="res" id="r${i}"></div></div>`).join("")}
+function grammar(){if(!G)return"";return `<h2 class="sh">③ Grammar point</h2><div class="card"><div class="pat">${G.pattern}</div><p>${G.explain}</p>
+${G.examples.map((x,k)=>`<div class="ex" onclick="play('g${k}',G.examples[${k}][3]||G.examples[${k}][0])"><b>${x[0]}</b> 🔊<div class="ro">${x[1]}</div><div>${x[2]}</div></div>`).join("")}
+${G.mistake?`<div class="mis">⚠️ <b>Common mistake:</b> ${G.mistake}</div>`:""}</div>`}
+let youMode=false;
+function dialogue(){if(!D.length)return"";return `<h2 class="sh">④ Mini dialogue</h2><p class="shd">${DTITLE||""}</p><div class="card">
+<button onclick="playAll()">▶ Play all</button><button class="alt" onclick="stopAll()">■ Stop</button><button class="alt" id="bro" onclick="document.body.classList.toggle('noro');this.textContent=document.body.classList.contains('noro')?'Show guide':'Hide guide'">Hide guide</button><button class="alt" id="ben" onclick="document.body.classList.toggle('noen');this.textContent=document.body.classList.contains('noen')?'Show English':'Hide English'">Hide English</button><button class="alt" id="bym" onclick="toggleYou()">🎤 You speak mode</button>
+<div style="margin-top:10px">${D.map((d,k)=>`<div class="dl ${d[0]==="you"?"you":""}" id="dl${k}"><div class="who">${d[0]==="you"?"You":d[0]}</div><div class="tx">
+<div class="show"><b>${d[1]}</b><div class="ro">${d[2]}</div></div>${d[0]==="you"?`<div class="yp hid">Your line: say it with 🎤 <button class="alt sm" onclick="mic(D[${k}][1],$('dr${k}'))">🎤</button> <button class="alt sm" onclick="revealLine(${k})">Show</button></div>`:""}
+<div class="den">${d[3]}</div><div class="res" id="dr${k}"></div></div><button class="alt sm" onclick="playLine(${k})">▶</button></div>`).join("")}</div></div>`}
+function playLine(k,done,keep){const d=D[k];$("dl"+k).classList.add("playing");play("d"+k,d[4]||d[1],.9,()=>{$("dl"+k).classList.remove("playing");done&&done()},keep)}
+function playAll(){stopAll();const my=seq;const step=k=>{if(k>=D.length||my!==seq)return;
+ if(youMode&&D[k][0]==="you"){$("dl"+k).classList.add("playing");setTimeout(()=>{if(my===seq){$("dl"+k).classList.remove("playing");step(k+1)}},3500);return}
+ playLine(k,()=>setTimeout(()=>{if(my===seq)step(k+1)},400),true)};step(0)}
+function toggleYou(){youMode=!youMode;$("bym").textContent=youMode?"Show all lines":"🎤 You speak mode";
+ D.forEach((d,k)=>{if(d[0]!=="you")return;const l=$("dl"+k);l.querySelector(".show").classList.toggle("hid",youMode);l.querySelector(".yp").classList.toggle("hid",!youMode)})}
+function revealLine(k){$("dl"+k).querySelector(".show").classList.remove("hid")}
+let qDone={},qRight=0;const shuffled={};
+function quiz(){if(!Q.length)return"";return `<h2 class="sh">${META.review?"②":"⑤"} Quick quiz</h2><p class="shd">Instant feedback. Your best score is saved on this device.</p><div class="card">${Q.map((q,k)=>{
+ let body="";if(q.type==="order"){shuffled[k]=[...q.tiles].sort(()=>Math.random()-.5);
+  body=`<div class="ans" id="qa${k}"></div><div class="tiles" id="qt${k}">${shuffled[k].map((t,j)=>`<button onclick="tile(${k},${j},this)">${t}</button>`).join("")}</div><button class="sm" onclick="checkOrder(${k})">Check</button><button class="alt sm" onclick="resetOrder(${k})">Reset</button>`}
+ else body=(q.type==="listen"?`<button class="sm" onclick="play('q${k}',Q[${k}].say)">▶ Listen</button><br>`:"")+`<div class="ch">${q.choices.map((c,j)=>`<button onclick="answer(${k},${j},this)">${c}</button>`).join("")}</div>`;
+ return `<div class="qq"><div class="qp">${k+1}. ${q.prompt}</div>${body}<div class="res" id="qr${k}"></div></div>`}).join("")}
+ <div class="score" id="qscore">Score: 0 / ${Q.length}</div><div class="muted" id="qbest"></div></div>`}
+function qMark(k,ok){if(qDone[k])return;qDone[k]=1;if(ok)qRight++;$("qr"+k).innerHTML=ok?'<span class="ok">Correct! ✓</span>':`<span class="bad">Not quite. Answer: <b>${Q[k].type==="order"?Q[k].answer:Q[k].choices[Q[k].answer]}</b></span>`+(Q[k].explain?` · ${Q[k].explain}`:"");
+ const n=Object.keys(qDone).length;$("qscore").textContent=`Score: ${qRight} / ${Q.length}`+(n===Q.length?(qRight===Q.length?" 🎉 Perfect!":" · finished"):"");
+ if(n===Q.length){const b=store("vl-quiz")||{};b[LESSON]=Math.max(b[LESSON]||0,qRight);store("vl-quiz",b);showBest()}}
+function showBest(){const b=(store("vl-quiz")||{})[LESSON];if(b!=null&&$("qbest"))$("qbest").textContent=`Best saved score: ${b} / ${Q.length}`}
+function answer(k,j,b){if(qDone[k])return;const ok=j===Q[k].answer;b.classList.add(ok?"right":"wrong");if(!ok)b.parentNode.children[Q[k].answer].classList.add("right");if(Q[k].say&&Q[k].type!=="listen")play("q"+k,Q[k].say);qMark(k,ok)}
+function tile(k,j,b){if(qDone[k])return;b.disabled=true;const a=$("qa"+k);a.textContent=(a.textContent?a.textContent+" ":"")+shuffled[k][j]}
+function resetOrder(k){if(qDone[k])return;$("qa"+k).textContent="";$("qt"+k).querySelectorAll("button").forEach(b=>b.disabled=false)}
+function checkOrder(k){if(qDone[k])return;const ok=norm($("qa"+k).textContent)===norm(Q[k].answer);qMark(k,ok);if(Q[k].say)play("q"+k,Q[k].say)}
+function speakback(){if(!S.length)return"";return `<h2 class="sh">⑥ Speak-back practice</h2><p class="shd">Read the English, answer out loud with 🎤, then reveal the target answer.</p><div class="card">${S.map((s,k)=>`<div class="qq"><div class="qp">${k+1}. ${s.prompt}</div>
+<button class="sm" onclick="mic(S[${k}].jp,$('sr${k}'),()=>sbShow(${k}))">🎤 Answer</button><button class="alt sm" onclick="sbShow(${k})">Show answer</button>
+<div class="res" id="sr${k}"></div><div class="hid" id="sa${k}"><b style="font-size:19px">${s.jp}</b> <button class="alt sm" onclick="play('s${k}',sayOf(S[${k}]))">▶</button><div class="ro">${s.ro}</div></div></div>`).join("")}</div>`}
+function sbShow(k){$("sa"+k).classList.remove("hid")}
+function finish(){const done=(store("vl-done")||[]).includes(LESSON);return `<div class="card fin"><button id="bdone" onclick="markDone()">${done?"✅ Lesson complete":"Mark lesson complete"}</button>
+<p>${META.prev?`<a href="${META.prev}">← ${META.prevTitle||"Previous lesson"}</a>`:""}${META.prev&&META.next?" &nbsp;·&nbsp; ":""}${META.next?`<a href="${META.next}">Next: ${META.nextTitle||"tomorrow's lesson"} →</a>`:"<span class='muted'>The next lesson is coming soon.</span>"}</p></div>`}
+function markDone(){const d=store("vl-done")||[];if(!d.includes(LESSON))d.push(LESSON);store("vl-done",d);$("bdone").textContent="✅ Lesson complete";
+ $("donec").textContent=`${d.length} lesson${d.length===1?"":"s"} marked complete · this one is done ✅`}
+function vocab(){if(!V.length){$("vocab").remove();return}
+ $("vocab").innerHTML='<h2>Extra vocabulary</h2>'+V.map((v,k)=>`<div class="vi" onclick="play('v${k}',V[${k}][3]||V[${k}][0])"><b>${v[0]}</b> <span class="r">${v[1]}</span><small>${v[2]}</small></div>`).join("")}
+document.title=TITLE;
+$("page").innerHTML=`<h1>${TITLE}</h1><p class="sub">${SUB}</p>`+progress()+warm()+(META.review?quiz():phrases()+grammar()+dialogue()+quiz()+speakback())+finish();
+vocab();showBest();
+</script>
+<script src="../nav.js"></script>
+</body></html>
