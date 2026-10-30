@@ -8,6 +8,7 @@ older lessons (1-3) only have `const P=[...]` and `const V=[...]`. Needs node. W
   v{k}.mp3 (extra vocabulary item k from the optional `const V=[[jp, romaji, en], ...]`).
   Template lessons also get:
   r{k}.mp3  warm-up item k (only when it has no `ref`; refs like "lesson-1:p1" reuse that lesson's mp3),
+  x{k}.mp3  warm-up item k's example sentence `ex` (only when ex[3] has no ref),
   g{k}.mp3  grammar example k (G.examples),  d{k}.mp3  dialogue line k (D),
   q{k}.mp3  quiz item k that has a `say` text (listen items and answer read-outs),  s{k}.mp3  speak-back target k (S).
 Any item's optional say-text (e.g. katakana for a Latin-letter name) is what gets spoken.
@@ -70,6 +71,7 @@ async def main():
         jobs += [(t, f"p{i}.mp3", "+0%"), (t, f"p{i}_slow.mp3", a.slow)]
         jobs += [(say(w, 3), f"p{i}_w{j}.mp3", "-10%") for j, w in enumerate(p["parts"])]
     jobs += [(w.get("say") or w["jp"], f"r{k}.mp3", "+0%") for k, w in enumerate(D["WARM"]) if not w.get("ref")]
+    jobs += [(w["ex"][0], f"x{k}.mp3", "+0%") for k, w in enumerate(D["WARM"]) if w.get("ex") and not (len(w["ex"]) > 3 and w["ex"][3])]
     if D["G"]:
         jobs += [(say(x, 3), f"g{k}.mp3", "+0%") for k, x in enumerate(D["G"]["examples"])]
     jobs += [(say(x, 4) if len(x) > 4 else x[1], f"d{k}.mp3", "+0%") for k, x in enumerate(D["D"])]

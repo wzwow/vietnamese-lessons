@@ -99,7 +99,7 @@ for (const [vname, vp] of Object.entries(VIEWS)) {
       // expected audio for every item
       const exp = [];
       D.V.forEach((_, k) => exp.push(`v${k}`)); D.P.forEach((p, i) => { exp.push(`p${i}`, `p${i}_slow`); p.parts.forEach((_, j) => exp.push(`p${i}_w${j}`)) });
-      D.WARM.forEach((w, k) => exp.push(w.ref || `r${k}`)); if (D.G) D.G.examples.forEach((_, k) => exp.push(`g${k}`));
+      D.WARM.forEach((w, k) => { exp.push(w.ref || `r${k}`); if (w.ex) exp.push(w.ex[3] || `x${k}`) }); if (D.G) D.G.examples.forEach((_, k) => exp.push(`g${k}`));
       D.D.forEach((_, k) => exp.push(`d${k}`)); D.Q.forEach((q, k) => { if (q.type === "listen" || q.type === "order" || q.say) check(!!q.say, `${tag}: Q${k + 1} has no audio`); if (q.say) exp.push(`q${k}`) });
       D.S.forEach((_, k) => exp.push(`s${k}`));
       const url = f => new URL((f.includes(":") ? `audio/${f.split(":")[0]}/${f.split(":")[1]}` : `audio/${D.LESSON}/${f}`) + ".mp3", page.url()).href;
