@@ -8,6 +8,7 @@ const NAV = [
   { title: "Lesson 3: Consonants", href: "lessons/lesson-3.html" },
   { title: "Lesson 4: Pronouns", href: "lessons/lesson-4.html" },
   { title: "Lesson 5: Review (tones, vowels, consonants, pronouns)", href: "lessons/lesson-5.html" },
+  { title: "Lesson 6: Numbers 0–10", href: "lessons/lesson-6.html" },
 ];
 (function () {
   const base = new URL(".", document.currentScript.src); // repo root, wherever it's hosted
