@@ -10,6 +10,7 @@ const NAV = [
   { title: "Lesson 5: Review (tones, vowels, consonants, pronouns)", href: "lessons/lesson-5.html" },
   { title: "Lesson 6: Numbers 0–10", href: "lessons/lesson-6.html" },
   { title: "Lesson 7: Numbers to a million", href: "lessons/lesson-7.html" },
+  { title: "Lesson 8: là and có", href: "lessons/lesson-8.html" },
 ];
 (function () {
   const base = new URL(".", document.currentScript.src); // repo root, wherever it's hosted
