@@ -15,7 +15,7 @@ if (!base) {
 if (!base.endsWith("/")) base += "/";
 const lessons = fs.readdirSync(path.join(ROOT, "lessons")).filter(f => /^lesson-\d+\.html$/.test(f)).sort((a, b) => parseInt(a.slice(7)) - parseInt(b.slice(7)));
 const refs = fs.existsSync(path.join(ROOT, "reference")) ? fs.readdirSync(path.join(ROOT, "reference")).filter(f => f.endsWith(".html")).sort() : [];
-const pages = ["index.html", "plan.html", ...refs.map(f => "reference/" + f), ...lessons.map(f => "lessons/" + f)];
+let pages = ["index.html", "plan.html", ...refs.map(f => "reference/" + f), ...lessons.map(f => "lessons/" + f)]; if (process.env.QA_ONLY) pages = pages.filter(p => process.env.QA_ONLY.split(",").includes(p));
 const VIEWS = { mobile: { width: 390, height: 844, isMobile: true, hasTouch: true }, desktop: { width: 1366, height: 900 } };
 let fails = 0, passes = 0; const log = [];
 const check = (ok, msg) => { ok ? passes++ : fails++; if (!ok) log.push("FAIL " + msg); return ok };
