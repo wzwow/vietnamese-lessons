@@ -52,23 +52,23 @@ const TITLE = "Lesson 14: Food & eating out";
 const SUB = "Ask for the menu, ask what a dish is, order a bowl, check if it's spicy, and say it's delicious.";
 const META = {stage:2, week:3, lesson:14, total:60, review:false, prev:"lesson-13.html", prevTitle:"Lesson 13: Ordering coffee", next:"lesson-15.html", nextTitle:"Lesson 15: Review — intro, small talk, coffee, food"};
 const WARM = [
-  {ref:"lesson-13:p0", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah feh", en:"Please give me a coffee."},
+  {ref:"lesson-13:p0", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah fay", en:"Please give me a coffee."},
   {ref:"lesson-13:p3", jp:"Ở đây hay mang đi?", ro:"uh day high mahng dee", en:"Here or to take away?"},
   {ref:"lesson-11:p4", jp:"Rất vui được gặp bạn.", ro:"zuht vooy duh-uhk gahp bahn", en:"Nice to meet you."},
 ];
 const P = [
   {jp:"Cho tôi xem thực đơn.", ro:"chaw toy sem tuhk duhn", en:"Please show me the menu.", parts:[["cho tôi","chaw toy","give me / let me"],["xem","sem","to look at"],["thực đơn","tuhk duhn","menu"]], note:"cho tôi + verb = “let me …”. Here: let me look at the menu. Example: “Cho tôi xem thực đơn, cảm ơn.” Please let me see the menu, thank you."},
-  {jp:"Món này là gì?", ro:"mon nigh lah zee", en:"What is this dish?", parts:[["món","mon","dish"],["này","nigh","this"],["là gì","lah zee","is what"]], note:"này comes after the noun: món này = this dish. Example: “Món này ngon không?” Is this dish tasty?"},
+  {jp:"Món này là gì?", ro:"mawn nigh lah zee", en:"What is this dish?", parts:[["món","mawn","dish"],["này","nigh","this"],["là gì","lah zee","is what"]], note:"này comes after the noun: món này = this dish. Example: “Món này ngon không?” Is this dish tasty?"},
   {jp:"Cho tôi một tô phở bò.", ro:"chaw toy moht toh fuh baw", en:"Please give me a bowl of beef phở.", parts:[["một","moht","one"],["tô","toh","bowl (counting word)"],["phở","fuh","phở noodle soup"],["bò","baw","beef"]], note:"tô is the counting word for a big bowl, like ly for a glass. Example: “Cho tôi một tô phở gà.” Please give me a bowl of chicken phở."},
-  {jp:"Món này cay không?", ro:"mon nigh kigh kohm", en:"Is this dish spicy?", parts:[["món này","mon nigh","this dish"],["cay","kigh","spicy"],["không","kohm","(question word) / no"]], note:"Put không at the end of a statement to make a yes/no question. Answer “Cay.” (Spicy.) or “Không cay.” (Not spicy.) Example: “Không cay.” Not spicy."},
-  {jp:"Ngon quá!", ro:"ngon kwah", en:"So delicious!", parts:[["ngon","ngon","delicious"],["quá","kwah","so / too (very)"]], note:"adjective + quá = “so …!”. Example: “Cay quá!” So spicy!"},
+  {jp:"Món này cay không?", ro:"mawn nigh kigh khohm", en:"Is this dish spicy?", parts:[["món này","mawn nigh","this dish"],["cay","kigh","spicy"],["không","khohm","(question word) / no"]], note:"Put không at the end of a statement to make a yes/no question. Answer “Cay.” (Spicy.) or “Không cay.” (Not spicy.) Example: “Không cay.” Not spicy."},
+  {jp:"Ngon quá!", ro:"ngawn kwah", en:"So delicious!", parts:[["ngon","ngawn","delicious"],["quá","kwah","so / too (very)"]], note:"adjective + quá = “so …!”. Example: “Cay quá!” So spicy!"},
 ];
-const V = [["ăn","ahn","to eat"],["cơm","kuhm","rice"],["nước","nuh-uhk","water"],["ngon","ngon","delicious"],["cay","kigh","spicy"],["món","mon","dish"]];
+const V = [["ăn","an","to eat"],["cơm","kuhm","rice"],["nước","nuh-uhk","water"],["ngon","ngawn","delicious"],["cay","kigh","spicy"],["món","mawn","dish"]];
 const G = {pattern:"Noun + này (this)  ·  statement + không? (yes/no question)", explain:"<b>này</b> (this) comes <b>after</b> the noun: <b>món này</b> (this dish). To turn a statement into a yes/no question, add <b>không</b> at the end: <b>Món này cay không?</b> (Is this dish spicy?) Use <b>quá</b> after an adjective for “so …!”: <b>Ngon quá!</b>",
-  examples:[["Cho tôi xem thực đơn.","chaw toy sem tuhk duhn","Please show me the menu."],["Món này là gì?","mon nigh lah zee","What is this dish?"],["Cho tôi một tô phở bò.","chaw toy moht toh fuh baw","Please give me a bowl of beef phở."],["Món này cay không?","mon nigh kigh kohm","Is this dish spicy?"],["Ngon quá!","ngon kwah","So delicious!"]],
+  examples:[["Cho tôi xem thực đơn.","chaw toy sem tuhk duhn","Please show me the menu."],["Món này là gì?","mawn nigh lah zee","What is this dish?"],["Cho tôi một tô phở bò.","chaw toy moht toh fuh baw","Please give me a bowl of beef phở."],["Món này cay không?","mawn nigh kigh khohm","Is this dish spicy?"],["Ngon quá!","ngawn kwah","So delicious!"]],
   mistake:"Say món này (dish + this), not này món. And for “bowl of phở” put the number and tô first: một tô phở."};
 const DTITLE = "Ordering food at a restaurant.";
-const D = [["Staff","Xin chào! Bạn ăn gì?","sin chow! bahn ahn zee","Hello! What would you like to eat?"],["you","Cho tôi xem thực đơn.","chaw toy sem tuhk duhn","Please show me the menu."],["you","Món này cay không?","mon nigh kigh kohm","Is this dish spicy?"],["Staff","Không cay.","kohm kigh","Not spicy."],["you","Cho tôi một tô phở bò.","chaw toy moht toh fuh baw","Please give me a bowl of beef phở."],["you","Ngon quá!","ngon kwah","So delicious!"]];
+const D = [["Staff","Xin chào! Bạn ăn gì?","sin chow! bahn an zee","Hello! What would you like to eat?"],["you","Cho tôi xem thực đơn.","chaw toy sem tuhk duhn","Please show me the menu."],["you","Món này cay không?","mawn nigh kigh khohm","Is this dish spicy?"],["Staff","Không cay.","khohm kigh","Not spicy."],["you","Cho tôi một tô phở bò.","chaw toy moht toh fuh baw","Please give me a bowl of beef phở."],["you","Ngon quá!","ngawn kwah","So delicious!"]];
 const Q = [
   {type:"choose", prompt:"Which word means “delicious”?", choices:["cay","ngon","món"], answer:1, say:"ngon"},
   {type:"listen", prompt:"Listen. What does it mean?", say:"Cho tôi xem thực đơn.", choices:["Please show me the menu.","Here or to take away?","Nice to meet you."], answer:0},
@@ -79,7 +79,7 @@ const Q = [
   {type:"choose", prompt:"Which word means “this” in “Món này”?", choices:["này","quá","xem"], answer:0, say:"này"},
   {type:"order", prompt:"Put the words in order: “Is this dish spicy?”", tiles:["Món","này","cay","không?"], answer:"Món này cay không?", say:"Món này cay không?"},
 ];
-const S = [{prompt:"Ask “Please show me the menu.”", jp:"Cho tôi xem thực đơn.", ro:"chaw toy sem tuhk duhn"},{prompt:"Ask “Is this dish spicy?”", jp:"Món này cay không?", ro:"mon nigh kigh kohm"},{prompt:"Say “So delicious!”", jp:"Ngon quá!", ro:"ngon kwah"}];
+const S = [{prompt:"Ask “Please show me the menu.”", jp:"Cho tôi xem thực đơn.", ro:"chaw toy sem tuhk duhn"},{prompt:"Ask “Is this dish spicy?”", jp:"Món này cay không?", ro:"mawn nigh kigh khohm"},{prompt:"Say “So delicious!”", jp:"Ngon quá!", ro:"ngawn kwah"}];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------
 const $=id=>document.getElementById(id);

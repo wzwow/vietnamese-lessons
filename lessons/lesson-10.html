@@ -52,14 +52,14 @@ const TITLE = "Lesson 10: Review — Foundations";
 const SUB = "Review day: bring back numbers, là/có and question words from lessons 6–9, then test yourself.";
 const META = {stage:1, week:2, lesson:10, total:60, review:true, prev:"lesson-9.html", prevTitle:"Lesson 9: Asking questions", next:"lesson-11.html", nextTitle:"Lesson 11: Self-introduction"};
 const WARM = [
-  {ref:"lesson-6:p2", jp:"Cho tôi hai cái.", ro:"chaw toy high gai", en:"Two, please.", ex:["Cho tôi ba cái này.","chaw toy bah gai nay","Three of these, please."]},
+  {ref:"lesson-6:p2", jp:"Cho tôi hai cái.", ro:"chaw toy high gai", en:"Two, please.", ex:["Cho tôi ba cái này.","chaw toy bah gai nigh","Three of these, please."]},
   {ref:"lesson-6:p3", jp:"Mấy cái?", ro:"may gai", en:"How many?", ex:["Bạn muốn mấy cái?","bahn moo-uhn may gai","How many do you want?","lesson-6:g2"]},
-  {ref:"lesson-7:p2", jp:"Cái này bao nhiêu tiền?", ro:"gai nay bow nyew tee-uhn", en:"How much is this?", ex:["Cái kia bao nhiêu tiền?","gai kee-uh bow nyew tee-uhn","How much is that one?"]},
+  {ref:"lesson-7:p2", jp:"Cái này bao nhiêu tiền?", ro:"gai nigh bow nyew tee-uhn", en:"How much is this?", ex:["Cái kia bao nhiêu tiền?","gai kee-uh bow nyew tee-uhn","How much is that one?"]},
   {ref:"lesson-7:p3", jp:"Năm mươi nghìn đồng.", ro:"nahm muh-uh-ee ngeen dohm", en:"Fifty thousand đồng.", ex:["Hai cái là một trăm nghìn.","high gai lah moht chahm ngeen","Two is one hundred thousand.","lesson-7:d3"]},
   {ref:"lesson-8:p0", jp:"Tôi là sinh viên.", ro:"toy lah sing vee-en", en:"I am a student.", ex:["Bạn có phải là sinh viên không?","bahn gaw fie lah sing vee-en khohm","Are you a student?","lesson-8:g3"]},
-  {ref:"lesson-8:p4", jp:"Ở đây có cà phê không?", ro:"uh day gaw gah feh khohm", en:"Is there coffee here?", ex:["Ở đây không có cà phê.","uh day khohm gaw gah feh","There's no coffee here.","lesson-8:g2"]},
+  {ref:"lesson-8:p4", jp:"Ở đây có cà phê không?", ro:"uh day gaw kah fay khohm", en:"Is there coffee here?", ex:["Ở đây không có cà phê.","uh day khohm gaw kah fay","There's no coffee here.","lesson-8:g2"]},
   {ref:"lesson-9:p0", jp:"Đây là cái gì?", ro:"day lah gai zee", en:"What is this?", ex:["Đó là cái gì?","daw lah gai zee","What is that?"]},
-  {ref:"lesson-9:p3", jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh doh", en:"Where is the restroom?", ex:["Bạn ở đâu?","bahn uh doh","Where are you?","lesson-9:g2"]},
+  {ref:"lesson-9:p3", jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh dow", en:"Where is the restroom?", ex:["Bạn ở đâu?","bahn uh dow","Where are you?","lesson-9:g2"]},
 ];
 const P = [];
 const V = [
@@ -68,7 +68,7 @@ const V = [
   ["là","lah","am / is / are (noun = noun)"],
   ["không phải là","khohm fie lah","is not"],
   ["có","gaw","have / there is"],
-  ["gì / ai / đâu / khi nào","zee / eye / doh / khee now","what / who / where / when"]
+  ["gì / ai / đâu / khi nào","zee / eye / dow / khee now","what / who / where / when"]
 ];
 const G = {pattern:"mười vs mươi · lăm / mốt · trăm / nghìn / triệu · là vs có · question words stay put",
   explain:"<b>Numbers:</b> mười (10) falls low; mươi (the “-ty” in 20, 30…) is flat. After mười / mươi, năm → <b>lăm</b> (15 = mười lăm); after mươi, một → <b>mốt</b> (21 = hai mươi mốt). Bigger units: trăm (100), nghìn / South ngàn (1,000), triệu (1,000,000). <b>là vs có:</b> là links two nouns (<b>Tôi là sinh viên.</b>); its negative is <b>không phải là</b>. Don't put là before adjectives: <b>Tôi mệt.</b> có means “have / there is”; negative <b>không có</b>. <b>Questions:</b> gì / ai / đâu / khi nào stay where the answer goes — don't front them like English.",
@@ -76,7 +76,7 @@ const G = {pattern:"mười vs mươi · lăm / mốt · trăm / nghìn / triệ
     ["mười lăm · hai mươi mốt","muh-ee lahm · high muh-uh-ee moht","15 · 21"],
     ["Năm mươi nghìn đồng.","nahm muh-uh-ee ngeen dohm","Fifty thousand đồng."],
     ["Tôi không phải là bác sĩ.","toy khohm fie lah bahk see","I'm not a doctor."],
-    ["Nhà vệ sinh ở đâu?","nyah vay sing uh doh","Where is the restroom?"]
+    ["Nhà vệ sinh ở đâu?","nyah vay sing uh dow","Where is the restroom?"]
   ],
   mistake:"Don't say “Tôi không là bác sĩ” — use không phải là. Don't put là before adjectives (Tôi khỏe, not Tôi là khỏe). And mười lăm is 15; mười năm means “ten years”."};
 const DTITLE = "";
@@ -100,9 +100,9 @@ const Q = [
 ];
 const S = [
   {prompt:"Count from one to five.", jp:"Một, hai, ba, bốn, năm.", ro:"moht, high, bah, bohn, nahm"},
-  {prompt:"Ask how much this is.", jp:"Cái này bao nhiêu tiền?", ro:"gai nay bow nyew tee-uhn"},
+  {prompt:"Ask how much this is.", jp:"Cái này bao nhiêu tiền?", ro:"gai nigh bow nyew tee-uhn"},
   {prompt:"Say “I am a student.” Then “I'm not a doctor.”", jp:"Tôi là sinh viên. Tôi không phải là bác sĩ.", ro:"toy lah sing vee-en. toy khohm fie lah bahk see"},
-  {prompt:"Ask where the restroom is.", jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh doh"}
+  {prompt:"Ask where the restroom is.", jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh dow"}
 ];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------

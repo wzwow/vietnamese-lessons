@@ -52,7 +52,7 @@ const TITLE = "Lesson 8: là and có";
 const SUB = "Say what something is with là, what you have with có, and how to say “not” and ask yes/no questions with both.";
 const META = {stage:1, week:2, lesson:8, total:60, review:false, prev:"lesson-7.html", prevTitle:"Lesson 7: Numbers to a million", next:"lesson-9.html", nextTitle:"Lesson 9: Asking questions"};
 const WARM = [
-  {ref:"lesson-7:p2", jp:"Cái này bao nhiêu tiền?", ro:"gai nay bow nyew tee-uhn", en:"How much is this?"},
+  {ref:"lesson-7:p2", jp:"Cái này bao nhiêu tiền?", ro:"gai nigh bow nyew tee-uhn", en:"How much is this?"},
   {ref:"lesson-4:p0", jp:"Tôi tên là Minh.", ro:"toy tayn lah ming", en:"My name is Minh."},
   {ref:"lesson-4:p2", jp:"Anh khỏe không?", ro:"ahn khweh khohm", en:"How are you? (to an older man)"},
 ];
@@ -61,11 +61,11 @@ const P = [
   {jp:"Đây là bạn tôi.", ro:"day lah bahn toy", en:"This is my friend.", parts:[["đây","day","this (here)"],["là","lah","is"],["bạn tôi","bahn toy","my friend (lit. friend + me)"]], note:"Use đây là to introduce someone or show something. “My” is just tôi after the noun: bạn tôi = my friend, nhà tôi = my house. Example: “Đây là nhà tôi.” This is my house."},
   {jp:"Tôi không phải là bác sĩ.", ro:"toy khohm fie lah bahk see", en:"I'm not a doctor.", parts:[["không phải là","khohm fie lah","is not (negative of là)"],["bác sĩ","bahk see","doctor"]], note:"To say “not” with là, use không phải là, never “không là”. Example: “Đây không phải là cà phê.” This isn't coffee."},
   {jp:"Tôi có một con mèo.", ro:"toy gaw moht gawn meh-oo", en:"I have a cat.", parts:[["có","gaw","have / there is"],["một con","moht gawn","one (con = counter for animals)"],["mèo","meh-oo","cat"]], note:"có = to have. Animals take the counter con (like cái for things). Negative: không có = don't have. Example: “Tôi không có xe máy.” I don't have a motorbike."},
-  {jp:"Ở đây có cà phê không?", ro:"uh day gaw gah feh khohm", en:"Is there coffee here?", parts:[["ở đây","uh day","here (at this place)"],["có … không?","gaw … khohm","is there …? / do you have …?"],["cà phê","gah feh","coffee"]], note:"có also means “there is / there are”. Put có … không? around a word to make a yes/no question. Answer “Có.” (yes) or “Không có.” (no). Example: “Bạn có mèo không?” Do you have a cat?"},
+  {jp:"Ở đây có cà phê không?", ro:"uh day gaw kah fay khohm", en:"Is there coffee here?", parts:[["ở đây","uh day","here (at this place)"],["có … không?","gaw … khohm","is there …? / do you have …?"],["cà phê","kah fay","coffee"]], note:"có also means “there is / there are”. Put có … không? around a word to make a yes/no question. Answer “Có.” (yes) or “Không có.” (no). Example: “Bạn có mèo không?” Do you have a cat?"},
 ];
 const V = [["là","lah","am / is / are (noun = noun)"],["không phải là","khohm fie lah","is not"],["có","gaw","have / there is"],["không có","khohm gaw","don't have / there isn't"],["con","gawn","counter for animals"],["mèo","meh-oo","cat"]];
 const G = {pattern:"A là B · A không phải là B · có / không có · có … không?", explain:"<b>là</b> links two nouns: <b>Tôi là sinh viên.</b> Don't use it before adjectives: “I'm tired” is <b>Tôi mệt.</b> (not “Tôi là mệt”). The negative is <b>không phải là</b>. <b>có</b> means “have” or “there is”, and its negative is <b>không có</b>. For yes/no questions, wrap the verb or adjective in <b>có … không?</b>: <b>Bạn có mèo không?</b> (Do you have a cat?), <b>Bạn có khỏe không?</b> (Are you well? — có is optional here). With là, ask <b>có phải là … không?</b>: <b>Bạn có phải là sinh viên không?</b>",
-  examples:[["Tôi là sinh viên.","toy lah sing vee-en","I am a student."],["Tôi mệt.","toy mayt","I'm tired. (no là before adjectives)"],["Ở đây không có cà phê.","uh day khohm gaw gah feh","There's no coffee here."],["Bạn có phải là sinh viên không?","bahn gaw fie lah sing vee-en khohm","Are you a student?"]],
+  examples:[["Tôi là sinh viên.","toy lah sing vee-en","I am a student."],["Tôi mệt.","toy mayt","I'm tired. (no là before adjectives)"],["Ở đây không có cà phê.","uh day khohm gaw kah fay","There's no coffee here."],["Bạn có phải là sinh viên không?","bahn gaw fie lah sing vee-en khohm","Are you a student?"]],
   mistake:"Don't say “Tôi không là bác sĩ” — the negative of là is không phải là: Tôi không phải là bác sĩ. And don't put là before adjectives: Tôi khỏe (I'm fine), not Tôi là khỏe."};
 const DTITLE = "Meeting a friend's friend.";
 const D = [["Lan","Chào bạn! Đây là Minh.","chow bahn! day lah ming","Hi! This is Minh."],["you","Chào Minh! Bạn có phải là sinh viên không?","chow ming! bahn gaw fie lah sing vee-en khohm","Hi Minh! Are you a student?"],["Minh","Không, tôi không phải là sinh viên. Tôi là bác sĩ.","khohm, toy khohm fie lah sing vee-en. toy lah bahk see","No, I'm not a student. I'm a doctor."],["you","Ồ! Bạn có mèo không?","oh! bahn gaw meh-oo khohm","Oh! Do you have a cat?"],["Minh","Có, tôi có hai con mèo.","gaw, toy gaw high gawn meh-oo","Yes, I have two cats."]];
@@ -79,7 +79,7 @@ const Q = [
   {type:"choose", prompt:"How do you say “This is my friend”?", choices:["Đây là bạn tôi.","Tôi là bạn đây.","Đây có bạn tôi."], answer:0, say:"Đây là bạn tôi."},
   {type:"order", prompt:"Put the words in order: “Do you have a cat?”", tiles:["Bạn","có","mèo","không?"], answer:"Bạn có mèo không?", say:"Bạn có mèo không?"},
 ];
-const S = [{prompt:"Say “I am a student.”", jp:"Tôi là sinh viên.", ro:"toy lah sing vee-en"},{prompt:"Say “I'm not a doctor.”", jp:"Tôi không phải là bác sĩ.", ro:"toy khohm fie lah bahk see"},{prompt:"Ask if there's coffee here.", jp:"Ở đây có cà phê không?", ro:"uh day gaw gah feh khohm"}];
+const S = [{prompt:"Say “I am a student.”", jp:"Tôi là sinh viên.", ro:"toy lah sing vee-en"},{prompt:"Say “I'm not a doctor.”", jp:"Tôi không phải là bác sĩ.", ro:"toy khohm fie lah bahk see"},{prompt:"Ask if there's coffee here.", jp:"Ở đây có cà phê không?", ro:"uh day gaw kah fay khohm"}];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------
 const $=id=>document.getElementById(id);

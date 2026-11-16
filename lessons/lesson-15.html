@@ -53,31 +53,31 @@ const SUB = "Review day: bring back phrases from lessons 11–14, then test your
 const META = {stage:2, week:3, lesson:15, total:60, review:true, prev:"lesson-14.html", prevTitle:"Lesson 14: Food & eating out", next:"", nextTitle:""};
 const WARM = [
   {ref:"lesson-11:p0", jp:"Xin chào, tôi là Mai.", ro:"sin chow, toy lah my", en:"Hello, I'm Mai.", ex:["Xin chào, tôi là Minh.","sin chow, toy lah ming","Hello, I'm Minh."]},
-  {ref:"lesson-11:p4", jp:"Rất vui được gặp bạn.", ro:"zuht vooy duh-uhk gahp bahn", en:"Nice to meet you.", ex:["Rất vui được gặp chị.","zuht vooy duh-uhk gahp jee","Nice to meet you (to an older woman)."]},
-  {ref:"lesson-12:p0", jp:"Bạn khỏe không?", ro:"bahn kweh kohm", en:"How are you?", ex:["Mai khỏe không?","my kweh kohm","How is Mai?"]},
-  {ref:"lesson-12:p1", jp:"Tôi khỏe, cảm ơn. Còn bạn?", ro:"toy kweh, gahm uhn. gawn bahn", en:"I'm fine, thanks. And you?", ex:["Tôi khỏe. Còn Minh?","toy kweh. gawn ming","I'm fine. And Minh?"]},
-  {ref:"lesson-13:p0", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah feh", en:"Please give me a coffee.", ex:["Cho tôi một ly nước.","chaw toy moht lee nuh-uhk","Please give me a glass of water."]},
+  {ref:"lesson-11:p4", jp:"Rất vui được gặp bạn.", ro:"zuht vooy duh-uhk gahp bahn", en:"Nice to meet you.", ex:["Rất vui được gặp chị.","zuht vooy duh-uhk gahp chee","Nice to meet you (to an older woman)."]},
+  {ref:"lesson-12:p0", jp:"Bạn khỏe không?", ro:"bahn khweh khohm", en:"How are you?", ex:["Mai khỏe không?","my khweh khohm","How is Mai?"]},
+  {ref:"lesson-12:p1", jp:"Tôi khỏe, cảm ơn. Còn bạn?", ro:"toy khweh, gahm uhn. gawn bahn", en:"I'm fine, thanks. And you?", ex:["Tôi khỏe. Còn Minh?","toy khweh. gawn ming","I'm fine. And Minh?"]},
+  {ref:"lesson-13:p0", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah fay", en:"Please give me a coffee.", ex:["Cho tôi một ly nước.","chaw toy moht lee nuh-uhk","Please give me a glass of water."]},
   {ref:"lesson-13:p3", jp:"Ở đây hay mang đi?", ro:"uh day high mahng dee", en:"Here or to take away?", ex:["Mang đi.","mahng dee","Take away."]},
-  {ref:"lesson-14:p3", jp:"Món này cay không?", ro:"mon nigh kigh kohm", en:"Is this dish spicy?", ex:["Không cay.","kohm kigh","Not spicy."]},
-  {ref:"lesson-14:p4", jp:"Ngon quá!", ro:"ngon kwah", en:"So delicious!", ex:["Cay quá!","kigh kwah","So spicy!"]},
+  {ref:"lesson-14:p3", jp:"Món này cay không?", ro:"mawn nigh kigh khohm", en:"Is this dish spicy?", ex:["Không cay.","khohm kigh","Not spicy."]},
+  {ref:"lesson-14:p4", jp:"Ngon quá!", ro:"ngawn kwah", en:"So delicious!", ex:["Cay quá!","kigh kwah","So spicy!"]},
 ];
 const P = [];
 const V = [
   ["tôi / bạn","toy / bahn","I / you"],
   ["cảm ơn","gahm uhn","thank you"],
   ["cho tôi","chaw toy","give me"],
-  ["không","kohm","no / not · (yes/no question word)"],
+  ["không","khohm","no / not · (yes/no question word)"],
   ["quá","kwah","so … ! (after an adjective)"],
-  ["ngon / cay","ngon / kigh","delicious / spicy"]
+  ["ngon / cay","ngawn / kigh","delicious / spicy"]
 ];
 const G = {pattern:"tôi + verb · statement + không? · cho tôi + number + ly/tô + thing · adjective + quá",
   explain:"<b>Introductions:</b> Tôi là + name. Verbs never change form; <b>đang</b> before a verb means “right now.” <b>Questions:</b> add <b>không</b> at the end of a statement for yes/no: <b>Bạn khỏe không?</b> Bounce a question back with <b>Còn + person?</b> <b>Ordering:</b> <b>Cho tôi</b> + number + counting word (<b>ly</b> for drinks, <b>tô</b> for bowls) + thing. Use <b>hay</b> for “or.” <b>Reactions:</b> adjective + <b>quá</b> = “so …!” and <b>này</b> (this) goes after the noun: <b>món này</b>.",
   examples:[
     ["Xin chào, tôi là Mai.","sin chow, toy lah my","Hello, I'm Mai."],
-    ["Bạn khỏe không?","bahn kweh kohm","How are you?"],
-    ["Cho tôi một ly cà phê.","chaw toy moht lee kah feh","Please give me a coffee."],
-    ["Món này cay không?","mon nigh kigh kohm","Is this dish spicy?"],
-    ["Ngon quá!","ngon kwah","So delicious!"]
+    ["Bạn khỏe không?","bahn khweh khohm","How are you?"],
+    ["Cho tôi một ly cà phê.","chaw toy moht lee kah fay","Please give me a coffee."],
+    ["Món này cay không?","mawn nigh kigh khohm","Is this dish spicy?"],
+    ["Ngon quá!","ngawn kwah","So delicious!"]
   ],
   mistake:"Say món này (dish + this), not này món. Put the number before the counting word: một ly cà phê, not cà phê một ly. Put quá right after the adjective: Ngon quá!"};
 const DTITLE = "";
@@ -100,10 +100,10 @@ const Q = [
   {type:"order", prompt:"Put the words in order: “So delicious!”", tiles:["Ngon","quá!"], answer:"Ngon quá!", say:"Ngon quá!"},
 ];
 const S = [
-  {prompt:"Introduce yourself with a generic name.", jp:"Xin chào, tôi là Mai.", ro:"sin chow, toy lah my"},
-  {prompt:"Ask “How are you?” Then answer and ask back.", jp:"Bạn khỏe không? Tôi khỏe, cảm ơn. Còn bạn?", ro:"bahn kweh kohm? toy kweh, gahm uhn. gawn bahn"},
-  {prompt:"Order a coffee.", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah feh"},
-  {prompt:"Ask if the dish is spicy, then say it's delicious.", jp:"Món này cay không? Ngon quá!", ro:"mon nigh kigh kohm? ngon kwah"}
+  {prompt:"Introduce yourself as Mai.", jp:"Xin chào, tôi là Mai.", ro:"sin chow, toy lah my"},
+  {prompt:"Ask “How are you?” Then answer and ask back.", jp:"Bạn khỏe không? Tôi khỏe, cảm ơn. Còn bạn?", ro:"bahn khweh khohm? toy khweh, gahm uhn. gawn bahn"},
+  {prompt:"Order a coffee.", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah fay"},
+  {prompt:"Ask if the dish is spicy, then say it's delicious.", jp:"Món này cay không? Ngon quá!", ro:"mawn nigh kigh khohm? ngawn kwah"}
 ];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------

@@ -52,23 +52,23 @@ const TITLE = "Lesson 9: Asking questions";
 const SUB = "Ask what, who, where, when and why with gì, ai, đâu, khi nào and tại sao. The question word just sits where the answer would go.";
 const META = {stage:1, week:2, lesson:9, total:60, review:false, prev:"lesson-8.html", prevTitle:"Lesson 8: là and có", next:"lesson-10.html", nextTitle:"Lesson 10: Review — Foundations"};
 const WARM = [
-  {ref:"lesson-8:p4", jp:"Ở đây có cà phê không?", ro:"uh day gaw gah feh khohm", en:"Is there coffee here?"},
+  {ref:"lesson-8:p4", jp:"Ở đây có cà phê không?", ro:"uh day gaw kah fay khohm", en:"Is there coffee here?"},
   {ref:"lesson-8:p1", jp:"Đây là bạn tôi.", ro:"day lah bahn toy", en:"This is my friend."},
-  {ref:"lesson-7:p2", jp:"Cái này bao nhiêu tiền?", ro:"gai nay bow nyew tee-uhn", en:"How much is this?"},
+  {ref:"lesson-7:p2", jp:"Cái này bao nhiêu tiền?", ro:"gai nigh bow nyew tee-uhn", en:"How much is this?"},
 ];
 const P = [
   {jp:"Đây là cái gì?", ro:"day lah gai zee", en:"What is this?", parts:[["đây là","day lah","this is"],["cái","gai","thing (counter for objects)"],["gì","zee","what"]], note:"gì = what. It goes at the end, right where the answer will be: “Đây là cái gì?” → “Đây là cà phê.” In the South gì sounds more like “yee”. Example: “Đó là cái gì?” What is that?"},
   {jp:"Bạn tên là gì?", ro:"bahn tayn lah zee", en:"What's your name?", parts:[["bạn","bahn","you"],["tên là","tayn lah","name is"],["gì","zee","what"]], note:"Literally “you name is what?”. Answer by swapping gì for the name: “Tôi tên là Mai.” Example: “Cái này tiếng Việt là gì?” What is this in Vietnamese?"},
   {jp:"Đó là ai?", ro:"daw lah eye", en:"Who is that?", parts:[["đó","daw","that (there)"],["là","lah","is"],["ai","eye","who"]], note:"ai = who, and it sounds just like English “eye”. Answer: “Đó là Minh.” That's Minh. Example: “Ai là bác sĩ?” Who is the doctor?"},
-  {jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh doh", en:"Where is the restroom?", parts:[["nhà vệ sinh","nyah vay sing","restroom / toilet"],["ở","uh","is at / located"],["đâu","doh","where"]], note:"ở đâu = where (is it located). Super useful when travelling. Answer: “Ở đằng kia.” Over there. Example: “Bạn ở đâu?” Where are you? / Where do you live?"},
-  {jp:"Khi nào bạn rảnh?", ro:"khee now bahn rahn", en:"When are you free?", parts:[["khi nào","khee now","when"],["bạn","bahn","you"],["rảnh","rahn","free (not busy)"]], note:"khi nào at the start asks about the future; at the end it asks about the past: “Bạn đến khi nào?” When did you arrive? tại sao = why: “Tại sao?” Why?"},
+  {jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh dow", en:"Where is the restroom?", parts:[["nhà vệ sinh","nyah vay sing","restroom / toilet"],["ở","uh","is at / located"],["đâu","dow","where"]], note:"ở đâu = where (is it located). Super useful when travelling. Answer: “Ở đằng kia.” Over there. Example: “Bạn ở đâu?” Where are you? / Where do you live?"},
+  {jp:"Khi nào bạn rảnh?", ro:"khee now bahn zahn", en:"When are you free?", parts:[["khi nào","khee now","when"],["bạn","bahn","you"],["rảnh","zahn (North) · rahn (South)","free (not busy)"]], note:"khi nào at the start asks about the future; at the end it asks about the past: “Bạn đến khi nào?” When did you arrive? tại sao = why: “Tại sao?” Why?"},
 ];
-const V = [["gì","zee","what"],["ai","eye","who"],["đâu","doh","where"],["khi nào","khee now","when"],["tại sao","tie sow","why"],["rảnh","rahn","free (not busy)"]];
+const V = [["gì","zee","what"],["ai","eye","who"],["đâu","dow","where"],["khi nào","khee now","when"],["tại sao","tie sow","why"],["rảnh","zahn (North) · rahn (South)","free (not busy)"]];
 const G = {pattern:"Question word stays where the answer goes", explain:"Vietnamese doesn't move words around to ask a question. Take the answer sentence and swap the missing part for a question word: <b>Đây là cà phê.</b> → <b>Đây là cái gì?</b> · <b>Đó là Minh.</b> → <b>Đó là ai?</b> · <b>Minh ở Hà Nội.</b> → <b>Minh ở đâu?</b> The question words are <b>gì</b> (what), <b>ai</b> (who), <b>đâu</b> (where), <b>khi nào</b> (when) and <b>tại sao</b> (why). <b>khi nào</b> is special: at the front it asks about the future, at the end about the past.",
-  examples:[["Đây là cái gì?","day lah gai zee","What is this?"],["Ai là bác sĩ?","eye lah bahk see","Who is the doctor?"],["Bạn ở đâu?","bahn uh doh","Where are you?"],["Bạn đến khi nào?","bahn dayn khee now","When did you arrive?"],["Tại sao?","tie sow","Why?"]],
+  examples:[["Đây là cái gì?","day lah gai zee","What is this?"],["Ai là bác sĩ?","eye lah bahk see","Who is the doctor?"],["Bạn ở đâu?","bahn uh dow","Where are you?"],["Bạn đến khi nào?","bahn dayn khee now","When did you arrive?"],["Tại sao?","tie sow","Why?"]],
   mistake:"Don't put the question word first like in English: “Gì bạn tên là?” is wrong. Keep the normal order and put gì where the answer goes: Bạn tên là gì?"};
 const DTITLE = "At a café with a friend.";
-const D = [["you","Xin lỗi, nhà vệ sinh ở đâu?","seen loy, nyah vay sing uh doh","Excuse me, where's the restroom?"],["Mai","Ở đằng kia.","uh dahng kee-uh","Over there."],["you","Cảm ơn! Đó là ai?","gahm uhn! daw lah eye","Thanks! Who is that?"],["Mai","Đó là Minh, bạn tôi.","daw lah ming, bahn toy","That's Minh, my friend."],["you","Đây là cái gì?","day lah gai zee","What is this?"],["Mai","Đây là cà phê sữa đá.","day lah gah feh suh-uh dah","This is iced milk coffee."]];
+const D = [["you","Xin lỗi, nhà vệ sinh ở đâu?","sin loy, nyah vay sing uh dow","Excuse me, where's the restroom?"],["Mai","Ở đằng kia.","uh dahng kee-uh","Over there."],["you","Cảm ơn! Đó là ai?","gahm uhn! daw lah eye","Thanks! Who is that?"],["Mai","Đó là Minh, bạn tôi.","daw lah ming, bahn toy","That's Minh, my friend."],["you","Đây là cái gì?","day lah gai zee","What is this?"],["Mai","Đây là cà phê sữa đá.","day lah kah fay suh-uh dah","This is iced milk coffee."]];
 const Q = [
   {type:"choose", prompt:"Which word means “who”?", choices:["gì","ai","đâu"], answer:1, say:"ai"},
   {type:"listen", prompt:"Listen. What does it mean?", say:"Nhà vệ sinh ở đâu?", choices:["Where is the restroom?","Is there a restroom?","Who is in the restroom?"], answer:0},
@@ -79,7 +79,7 @@ const Q = [
   {type:"choose", prompt:"Someone asks “Đó là ai?” Which is a good answer?", choices:["Ở đằng kia.","Đó là Minh.","Có."], answer:1, say:"Đó là Minh."},
   {type:"order", prompt:"Put the words in order: “Where is the restroom?”", tiles:["Nhà","vệ","sinh","ở","đâu?"], answer:"Nhà vệ sinh ở đâu?", say:"Nhà vệ sinh ở đâu?"},
 ];
-const S = [{prompt:"Ask “What is this?”", jp:"Đây là cái gì?", ro:"day lah gai zee"},{prompt:"Ask “Where is the restroom?”", jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh doh"},{prompt:"Ask someone when they're free.", jp:"Khi nào bạn rảnh?", ro:"khee now bahn rahn"}];
+const S = [{prompt:"Ask “What is this?”", jp:"Đây là cái gì?", ro:"day lah gai zee"},{prompt:"Ask “Where is the restroom?”", jp:"Nhà vệ sinh ở đâu?", ro:"nyah vay sing uh dow"},{prompt:"Ask someone when they're free.", jp:"Khi nào bạn rảnh?", ro:"khee now bahn zahn"}];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------
 const $=id=>document.getElementById(id);

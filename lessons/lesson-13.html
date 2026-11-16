@@ -52,23 +52,23 @@ const TITLE = "Lesson 13: Ordering coffee";
 const SUB = "Order a drink, say how you like it, and choose between here and takeaway. Short, polite lines for any café.";
 const META = {stage:2, week:3, lesson:13, total:60, review:false, prev:"lesson-12.html", prevTitle:"Lesson 12: Small talk", next:"lesson-14.html", nextTitle:"Lesson 14: Food & eating out"};
 const WARM = [
-  {ref:"lesson-12:p0", jp:"Bạn khỏe không?", ro:"bahn kweh kohm", en:"How are you?"},
+  {ref:"lesson-12:p0", jp:"Bạn khỏe không?", ro:"bahn khweh khohm", en:"How are you?"},
   {ref:"lesson-12:p4", jp:"Hẹn gặp lại!", ro:"hen gahp lye", en:"See you again!"},
   {ref:"lesson-11:p4", jp:"Rất vui được gặp bạn.", ro:"zuht vooy duh-uhk gahp bahn", en:"Nice to meet you."},
 ];
 const P = [
-  {jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah feh", en:"Please give me a coffee.", parts:[["cho tôi","chaw toy","give me"],["một","moht","one"],["ly","lee","glass / cup (for drinks)"],["cà phê","kah feh","coffee"]], note:"cho tôi + thing = “give me …”, the everyday way to order. ly is the counting word for a glass or cup of a drink. Example: “Cho tôi một ly nước.” Please give me a glass of water."},
-  {jp:"Cà phê sữa đá.", ro:"kah feh suh-ah dah", en:"Iced coffee with milk.", parts:[["cà phê","kah feh","coffee"],["sữa","suh-ah","milk"],["đá","dah","ice"]], note:"Just name the drink: coffee + milk + ice. Example: “Trà đá.” Iced tea."},
-  {jp:"Không đường, ít đá.", ro:"kohm duh-uhng, eet dah", en:"No sugar, less ice.", parts:[["không","kohm","no / not"],["đường","duh-uhng","sugar"],["ít","eet","a little / less"],["đá","dah","ice"]], note:"không + thing = none of it. ít + thing = less of it. Example: “Ít đường.” Less sugar."},
+  {jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah fay", en:"Please give me a coffee.", parts:[["cho tôi","chaw toy","give me"],["một","moht","one"],["ly","lee","glass / cup (for drinks)"],["cà phê","kah fay","coffee"]], note:"cho tôi + thing = “give me …”, the everyday way to order. ly is the counting word for a glass or cup of a drink. Example: “Cho tôi một ly nước.” Please give me a glass of water. In the North you'll also hear cốc for a glass: “một cốc cà phê”."},
+  {jp:"Cà phê sữa đá.", ro:"kah fay suh-uh dah", en:"Iced coffee with milk.", parts:[["cà phê","kah fay","coffee"],["sữa","suh-uh","milk"],["đá","dah","ice"]], note:"Just name the drink: coffee + milk + ice. Example: “Trà đá.” Iced tea."},
+  {jp:"Không đường, ít đá.", ro:"khohm duh-uhng, eet dah", en:"No sugar, less ice.", parts:[["không","khohm","no / not"],["đường","duh-uhng","sugar"],["ít","eet","a little / less"],["đá","dah","ice"]], note:"không + thing = none of it. ít + thing = less of it. Example: “Ít đường.” Less sugar."},
   {jp:"Ở đây hay mang đi?", ro:"uh day high mahng dee", en:"Here or to take away?", parts:[["ở đây","uh day","here"],["hay","high","or"],["mang đi","mahng dee","take away"]], note:"hay = “or” in a question. You can answer with just “Ở đây.” (Here.) or “Mang đi.” (Take away.)"},
-  {jp:"Cho tôi thêm một ly nữa.", ro:"chaw toy tehm moht lee nuh-ah", en:"Please give me one more.", parts:[["thêm","tehm","more / extra"],["một ly","moht lee","one glass"],["nữa","nuh-ah","more / again"]], note:"thêm … nữa = “one more”. Example: “Cho tôi thêm đá.” Please give me extra ice."},
+  {jp:"Cho tôi thêm một ly nữa.", ro:"chaw toy taym moht lee nuh-uh", en:"Please give me one more.", parts:[["thêm","taym","more / extra"],["một ly","moht lee","one glass"],["nữa","nuh-uh","more / again"]], note:"thêm … nữa = “one more”. Example: “Cho tôi thêm đá.” Please give me extra ice."},
 ];
-const V = [["cà phê","kah feh","coffee"],["sữa","suh-ah","milk"],["đá","dah","ice"],["đường","duh-uhng","sugar"],["uống","oong","to drink"],["nước","nuh-uhk","water"]];
+const V = [["cà phê","kah fay","coffee"],["sữa","suh-uh","milk"],["đá","dah","ice"],["đường","duh-uhng","sugar"],["uống","oo-uhng","to drink"],["nước","nuh-uhk","water"]];
 const G = {pattern:"Cho tôi + (number) + ly + drink", explain:"To order, say <b>Cho tôi</b> (give me) + number + <b>ly</b> (glass/cup) + drink: <b>Cho tôi một ly cà phê.</b> Add <b>không</b> (none) or <b>ít</b> (less) before sugar or ice: <b>Không đường, ít đá.</b> To choose between two things, use <b>hay</b> (or): <b>Ở đây hay mang đi?</b>",
-  examples:[["Cho tôi một ly cà phê.","chaw toy moht lee kah feh","Please give me a coffee."],["Cà phê sữa đá.","kah feh suh-ah dah","Iced coffee with milk."],["Không đường, ít đá.","kohm duh-uhng, eet dah","No sugar, less ice."],["Ở đây hay mang đi?","uh day high mahng dee","Here or to take away?"],["Cho tôi thêm một ly nữa.","chaw toy tehm moht lee nuh-ah","Please give me one more."]],
+  examples:[["Cho tôi một ly cà phê.","chaw toy moht lee kah fay","Please give me a coffee."],["Cà phê sữa đá.","kah fay suh-uh dah","Iced coffee with milk."],["Không đường, ít đá.","khohm duh-uhng, eet dah","No sugar, less ice."],["Ở đây hay mang đi?","uh day high mahng dee","Here or to take away?"],["Cho tôi thêm một ly nữa.","chaw toy taym moht lee nuh-uh","Please give me one more."]],
   mistake:"Put the number before ly: say một ly cà phê (one glass of coffee), not cà phê một ly. And không goes before the thing you don't want: không đường (no sugar)."};
 const DTITLE = "Ordering a drink at a café.";
-const D = [["Staff","Xin chào! Bạn uống gì?","sin chow! bahn oong zee","Hello! What would you like to drink?"],["you","Cho tôi một ly cà phê sữa đá.","chaw toy moht lee kah feh suh-ah dah","Please give me an iced coffee with milk."],["Staff","Ở đây hay mang đi?","uh day high mahng dee","Here or to take away?"],["you","Ở đây. Không đường, ít đá.","uh day. kohm duh-uhng, eet dah","Here. No sugar, less ice."],["Staff","Được rồi.","duh-uhk zoy","Okay."],["you","Cảm ơn!","gahm uhn","Thank you!"]];
+const D = [["Staff","Xin chào! Bạn uống gì?","sin chow! bahn oo-uhng zee","Hello! What would you like to drink?"],["you","Cho tôi một ly cà phê sữa đá.","chaw toy moht lee kah fay suh-uh dah","Please give me an iced coffee with milk."],["Staff","Ở đây hay mang đi?","uh day high mahng dee","Here or to take away?"],["you","Ở đây. Không đường, ít đá.","uh day. khohm duh-uhng, eet dah","Here. No sugar, less ice."],["Staff","Được rồi.","duh-uhk zoy","Okay."],["you","Cảm ơn!","gahm uhn","Thank you!"]];
 const Q = [
   {type:"choose", prompt:"Which word means “ice”?", choices:["sữa","đá","đường"], answer:1, say:"đá"},
   {type:"listen", prompt:"Listen. What does it mean?", say:"Cho tôi một ly cà phê.", choices:["Please give me a coffee.","Where is the café?","How are you?"], answer:0},
@@ -79,7 +79,7 @@ const Q = [
   {type:"choose", prompt:"Which word means “or” in “Here or to take away?”", choices:["hay","ít","nữa"], answer:0, say:"hay"},
   {type:"order", prompt:"Put the words in order: “Please give me a coffee.”", tiles:["Cho","tôi","một","ly","cà","phê."], answer:"Cho tôi một ly cà phê.", say:"Cho tôi một ly cà phê."},
 ];
-const S = [{prompt:"Order “Please give me a coffee.”", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah feh"},{prompt:"Say “No sugar, less ice.”", jp:"Không đường, ít đá.", ro:"kohm duh-uhng, eet dah"},{prompt:"Ask “Here or to take away?”", jp:"Ở đây hay mang đi?", ro:"uh day high mahng dee"}];
+const S = [{prompt:"Order “Please give me a coffee.”", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah fay"},{prompt:"Say “No sugar, less ice.”", jp:"Không đường, ít đá.", ro:"khohm duh-uhng, eet dah"},{prompt:"Ask “Here or to take away?”", jp:"Ở đây hay mang đi?", ro:"uh day high mahng dee"}];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------
 const $=id=>document.getElementById(id);
