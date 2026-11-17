@@ -18,6 +18,7 @@ const NAV = [
   { title: "Lesson 13: Ordering coffee", href: "lessons/lesson-13.html" },
   { title: "Lesson 14: Food & eating out", href: "lessons/lesson-14.html" },
   { title: "Lesson 15: Review (intro, small talk, coffee, food)", href: "lessons/lesson-15.html" },
+  { title: "Lesson 16: Paying", href: "lessons/lesson-16.html" },
 ];
 (function () {
   const base = new URL(".", document.currentScript.src); // repo root, wherever it's hosted
