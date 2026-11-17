@@ -57,18 +57,18 @@ const WARM = [
   {ref:"lesson-14:p4", jp:"Ngon quá!", ro:"ngawn kwah", en:"So delicious!"},
 ];
 const P = [
-  {jp:"Bao nhiêu tiền?", ro:"bow nyew tee-ehn", en:"How much (money) is it?", parts:[["bao nhiêu","bow nyew","how many / how much"],["tiền","tee-ehn","money"]], note:"bao nhiêu = how much / how many, and it goes at the end of the question. Example: “Cà phê bao nhiêu tiền?” How much is the coffee?"},
-  {jp:"Cái này bao nhiêu?", ro:"kigh nigh bow nyew", en:"How much is this one?", parts:[["cái này","kigh nigh","this thing"],["bao nhiêu","bow nyew","how much"]], note:"cái is the general word for a thing. Cái này = this one. Example: “Cái kia bao nhiêu?” How much is that one?"},
+  {jp:"Bao nhiêu tiền?", ro:"bow nyew tee-uhn", en:"How much (money) is it?", parts:[["bao nhiêu","bow nyew","how many / how much"],["tiền","tee-uhn","money"]], note:"bao nhiêu = how much / how many. On its own, Bao nhiêu tiền? means “how much money?”. After the thing you're asking about, it goes at the end. Example: “Cà phê bao nhiêu tiền?” How much is the coffee?"},
+  {jp:"Cái này bao nhiêu?", ro:"gai nigh bow nyew", en:"How much is this one?", parts:[["cái này","gai nigh","this thing"],["bao nhiêu","bow nyew","how much"]], note:"cái is the general word for a thing. Cái này = this one. Example: “Cái kia bao nhiêu?” How much is that one?"},
   {jp:"Đắt quá!", ro:"daht kwah", en:"That's too expensive!", parts:[["đắt","daht","expensive"],["quá","kwah","so / too (very)"]], note:"adjective + quá = “so / too …!”. The opposite of đắt is rẻ (cheap). Example: “Rẻ quá!” So cheap!"},
   {jp:"Bớt được không?", ro:"buht duh-uhk khohm", en:"Can you lower the price?", parts:[["bớt","buht","to reduce / take off"],["được không","duh-uhk khohm","is it possible?"]], note:"được không at the end asks “is that possible / okay?”. Example: “Ăn được không?” Can I eat it? (Is it okay to eat?)"},
-  {jp:"Tính tiền giúp tôi.", ro:"ting tee-ehn zoop toy", en:"Please give me the bill.", parts:[["tính tiền","ting tee-ehn","to calculate the bill"],["giúp","zoop","to help"],["tôi","toy","me / I"]], note:"giúp tôi = “help me”, a polite way to ask for something. Example: “Cho tôi xem giúp.” Please help me look."},
+  {jp:"Tính tiền giúp tôi.", ro:"ting tee-uhn zoop toy", en:"Please give me the bill.", parts:[["tính tiền","ting tee-uhn","to calculate the bill"],["giúp","zoop","to help"],["tôi","toy","me / I"]], note:"giúp tôi = “help me”, a polite way to ask for something. Example: “Mở cửa giúp tôi.” Please open the door for me."},
 ];
-const V = [["tiền","tee-ehn","money"],["đắt","daht","expensive"],["rẻ","zeh","cheap"],["cái","kigh","thing (general counting word)"],["nghìn","ngin","thousand"],["trả tiền","chah tee-ehn","to pay"]];
-const G = {pattern:"Noun + bao nhiêu (tiền)?  ·  adjective + quá!", explain:"In Vietnamese the question word <b>bao nhiêu</b> (how much) goes at the <b>end</b>: <b>Cái này bao nhiêu?</b> (How much is this?). Add <b>quá</b> after an adjective for “so / too …!”: <b>Đắt quá!</b> (Too expensive!) and <b>Rẻ quá!</b> (So cheap!)",
-  examples:[["Bao nhiêu tiền?","bow nyew tee-ehn","How much is it?"],["Cái này bao nhiêu?","kigh nigh bow nyew","How much is this one?"],["Đắt quá!","daht kwah","That's too expensive!"],["Bớt được không?","buht duh-uhk khohm","Can you lower the price?"],["Tính tiền giúp tôi.","ting tee-ehn zoop toy","Please give me the bill."]],
+const V = [["tiền","tee-uhn","money"],["đắt","daht","expensive"],["rẻ","zeh","cheap"],["cái","gai","thing (general counting word)"],["nghìn","ngeen","thousand"],["trả tiền","chah tee-uhn","to pay"]];
+const G = {pattern:"Noun + bao nhiêu (tiền)?  ·  adjective + quá!", explain:"In Vietnamese the question word <b>bao nhiêu</b> (how much) goes <b>after</b> the thing you're asking about, at the end: <b>Cái này bao nhiêu?</b> (How much is this?). Add <b>quá</b> after an adjective for “so / too …!”: <b>Đắt quá!</b> (Too expensive!) and <b>Rẻ quá!</b> (So cheap!)",
+  examples:[["Bao nhiêu tiền?","bow nyew tee-uhn","How much is it?"],["Cái này bao nhiêu?","gai nigh bow nyew","How much is this one?"],["Đắt quá!","daht kwah","That's too expensive!"],["Bớt được không?","buht duh-uhk khohm","Can you lower the price?"],["Tính tiền giúp tôi.","ting tee-uhn zoop toy","Please give me the bill."]],
   mistake:"Say Cái này bao nhiêu? (the question word at the end), not Bao nhiêu cái này? And đắt means expensive in price; do not mix it up with rẻ (cheap)."};
 const DTITLE = "Buying something at a small shop.";
-const D = [["you","Cái này bao nhiêu?","kigh nigh bow nyew","How much is this one?"],["Seller","Năm mươi nghìn.","nahm muh-uhy ngin","Fifty thousand."],["you","Đắt quá! Bớt được không?","daht kwah! buht duh-uhk khohm","Too expensive! Can you lower the price?"],["Seller","Được. Bốn mươi nghìn.","duh-uhk. bohn muh-uhy ngin","Okay. Forty thousand."],["you","Tính tiền giúp tôi.","ting tee-ehn zoop toy","Please give me the bill."]];
+const D = [["you","Cái này bao nhiêu?","gai nigh bow nyew","How much is this one?"],["Seller","Năm mươi nghìn.","nahm muh-uh-ee ngeen","Fifty thousand."],["you","Đắt quá! Bớt được không?","daht kwah! buht duh-uhk khohm","Too expensive! Can you lower the price?"],["Seller","Được. Bốn mươi nghìn.","duh-uhk. bohn muh-uh-ee ngeen","Okay. Forty thousand."],["you","Tính tiền giúp tôi.","ting tee-uhn zoop toy","Please give me the bill."]];
 const Q = [
   {type:"choose", prompt:"Which word means “expensive”?", choices:["rẻ","đắt","tiền"], answer:1, say:"đắt"},
   {type:"listen", prompt:"Listen. What does it mean?", say:"Bao nhiêu tiền?", choices:["How much (money) is it?","Please give me the bill.","So delicious!"], answer:0},
@@ -79,7 +79,7 @@ const Q = [
   {type:"choose", prompt:"Which word means “money”?", choices:["giúp","tiền","quá"], answer:1, say:"tiền"},
   {type:"order", prompt:"Put the words in order: “How much is this one?”", tiles:["Cái","này","bao","nhiêu?"], answer:"Cái này bao nhiêu?", say:"Cái này bao nhiêu?"},
 ];
-const S = [{prompt:"Ask “How much is it?”", jp:"Bao nhiêu tiền?", ro:"bow nyew tee-ehn"},{prompt:"Say “That's too expensive!”", jp:"Đắt quá!", ro:"daht kwah"},{prompt:"Ask “Can you lower the price?”", jp:"Bớt được không?", ro:"buht duh-uhk khohm"}];
+const S = [{prompt:"Ask “How much is it?”", jp:"Bao nhiêu tiền?", ro:"bow nyew tee-uhn"},{prompt:"Say “That's too expensive!”", jp:"Đắt quá!", ro:"daht kwah"},{prompt:"Ask “Can you lower the price?”", jp:"Bớt được không?", ro:"buht duh-uhk khohm"}];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------
 const $=id=>document.getElementById(id);
