@@ -57,18 +57,18 @@ const WARM = [
   {ref:"lesson-13:p0", jp:"Cho tôi một ly cà phê.", ro:"chaw toy moht lee kah fay", en:"Please give me a coffee."},
 ];
 const P = [
-  {jp:"Mấy giờ rồi?", ro:"may zuh roh-ee", en:"What time is it?", parts:[["mấy","may","how many / what"],["giờ","zuh","hour / o'clock"],["rồi","roh-ee","already / now"]], note:"mấy giờ = what time. rồi at the end means “already / by now”. Example: “Mấy giờ rồi?” is the everyday way to ask the time."},
-  {jp:"Bây giờ là ba giờ.", ro:"buh-ee zuh lah bah zuh", en:"It is three o'clock now.", parts:[["bây giờ","buh-ee zuh","now"],["là","lah","is"],["ba giờ","bah zuh","three o'clock"]], note:"number + giờ = o'clock. Example: “Bây giờ là năm giờ.” It is five o'clock now."},
-  {jp:"Tám giờ rưỡi.", ro:"tahm zuh zuh-ee", en:"Half past eight (8:30).", parts:[["tám","tahm","eight"],["giờ","zuh","o'clock"],["rưỡi","zuh-ee","and a half"]], note:"rưỡi after giờ adds thirty minutes. Example: “Bảy giờ rưỡi.” Half past seven."},
-  {jp:"Mấy giờ mở cửa?", ro:"may zuh muh kuh-uh", en:"What time does it open?", parts:[["mấy giờ","may zuh","what time"],["mở cửa","muh kuh-uh","to open (the door)"]], note:"The question words mấy giờ can go before the verb to ask when something happens. Example: “Mấy giờ đóng cửa?” What time does it close?"},
+  {jp:"Mấy giờ rồi?", ro:"may zuh zoy", en:"What time is it?", parts:[["mấy","may","how many / what"],["giờ","zuh","hour / o'clock"],["rồi","zoy","already / now"]], note:"mấy giờ = what time. rồi at the end means “already / by now”. Example: “Xin lỗi, mấy giờ rồi?” Excuse me, what time is it?"},
+  {jp:"Bây giờ là ba giờ.", ro:"bay zuh lah bah zuh", en:"It is three o'clock now.", parts:[["bây giờ","bay zuh","now"],["là","lah","is"],["ba giờ","bah zuh","three o'clock"]], note:"number + giờ = o'clock. Example: “Bây giờ là năm giờ.” It is five o'clock now."},
+  {jp:"Tám giờ rưỡi.", ro:"tahm zuh zuh-uh-ee", en:"Half past eight (8:30).", parts:[["tám","tahm","eight"],["giờ","zuh","o'clock"],["rưỡi","zuh-uh-ee","and a half"]], note:"rưỡi after giờ adds thirty minutes. Example: “Bảy giờ rưỡi.” Half past seven."},
+  {jp:"Mấy giờ mở cửa?", ro:"may zuh muh guh-uh", en:"What time does it open?", parts:[["mấy giờ","may zuh","what time"],["mở cửa","muh guh-uh","to open (the door)"]], note:"The question words mấy giờ can go before the verb to ask when something happens. Example: “Mấy giờ đóng cửa?” What time does it close?"},
   {jp:"Hẹn gặp lúc năm giờ.", ro:"hen gahp look nahm zuh", en:"See you at five o'clock.", parts:[["hẹn gặp","hen gahp","to arrange to meet"],["lúc","look","at (a time)"],["năm giờ","nahm zuh","five o'clock"]], note:"lúc + time = “at (that time)”. Example: “Lúc sáu giờ.” At six o'clock."},
 ];
-const V = [["giờ","zuh","hour / o'clock"],["phút","foot","minute"],["sáng","sahng","morning"],["chiều","chyew","afternoon"],["tối","toh-ee","evening / night"],["rưỡi","zuh-ee","half (past)"]];
+const V = [["giờ","zuh","hour / o'clock"],["phút","foot","minute"],["sáng","sahng","morning"],["chiều","chee-yeh-oo","afternoon"],["tối","toy","evening / night"],["rưỡi","zuh-uh-ee","half (past)"]];
 const G = {pattern:"number + giờ  ·  time + sáng / chiều / tối", explain:"Say the hour as <b>number + giờ</b>: <b>ba giờ</b> (3 o'clock). Add <b>rưỡi</b> for half past: <b>ba giờ rưỡi</b>. Put the part of day <b>after</b> the time: <b>bảy giờ sáng</b> (7 in the morning), <b>ba giờ chiều</b> (3 in the afternoon), <b>tám giờ tối</b> (8 in the evening).",
-  examples:[["Mấy giờ rồi?","may zuh roh-ee","What time is it?"],["Bây giờ là ba giờ.","buh-ee zuh lah bah zuh","It is three o'clock now."],["Tám giờ rưỡi.","tahm zuh zuh-ee","Half past eight."],["Mấy giờ mở cửa?","may zuh muh kuh-uh","What time does it open?"],["Hẹn gặp lúc năm giờ.","hen gahp look nahm zuh","See you at five o'clock."]],
+  examples:[["Mấy giờ rồi?","may zuh zoy","What time is it?"],["Bây giờ là ba giờ.","bay zuh lah bah zuh","It is three o'clock now."],["Tám giờ rưỡi.","tahm zuh zuh-uh-ee","Half past eight."],["Mấy giờ mở cửa?","may zuh muh guh-uh","What time does it open?"],["Hẹn gặp lúc năm giờ.","hen gahp look nahm zuh","See you at five o'clock."]],
   mistake:"Say bảy giờ sáng (time first, then sáng), not sáng bảy giờ. And giờ means o'clock/hour; phút is minutes."};
-const DTITLE = "Arranging to meet a friend.";
-const D = [["you","Mấy giờ rồi?","may zuh roh-ee","What time is it?"],["Mai","Bây giờ là ba giờ.","buh-ee zuh lah bah zuh","It is three o'clock now."],["you","Mấy giờ mở cửa?","may zuh muh kuh-uh","What time does it open?"],["Mai","Tám giờ rưỡi.","tahm zuh zuh-ee","Half past eight."],["you","Hẹn gặp lúc năm giờ.","hen gahp look nahm zuh","See you at five o'clock."]];
+const DTITLE = "Planning a trip to the market with a friend.";
+const D = [["you","Mấy giờ rồi?","may zuh zoy","What time is it?"],["Mai","Bây giờ là ba giờ.","bay zuh lah bah zuh","It is three o'clock now."],["you","Mấy giờ mở cửa?","may zuh muh guh-uh","What time does it open?"],["Mai","Năm giờ chiều.","nahm zuh chee-yeh-oo","Five in the afternoon."],["you","Hẹn gặp lúc năm giờ.","hen gahp look nahm zuh","See you at five o'clock."]];
 const Q = [
   {type:"choose", prompt:"Which word means “o'clock / hour”?", choices:["giờ","phút","tiền"], answer:0, say:"giờ"},
   {type:"listen", prompt:"Listen. What does it mean?", say:"Mấy giờ rồi?", choices:["What time is it?","How much is it?","See you at five o'clock."], answer:0},
@@ -79,7 +79,7 @@ const Q = [
   {type:"choose", prompt:"Which word means “evening / night”?", choices:["sáng","chiều","tối"], answer:2, say:"tối"},
   {type:"order", prompt:"Put the words in order: “See you at five o'clock.”", tiles:["Hẹn","gặp","lúc","năm","giờ."], answer:"Hẹn gặp lúc năm giờ.", say:"Hẹn gặp lúc năm giờ."},
 ];
-const S = [{prompt:"Ask “What time is it?”", jp:"Mấy giờ rồi?", ro:"may zuh roh-ee"},{prompt:"Say “Half past eight.”", jp:"Tám giờ rưỡi.", ro:"tahm zuh zuh-ee"},{prompt:"Say “See you at five o'clock.”", jp:"Hẹn gặp lúc năm giờ.", ro:"hen gahp look nahm zuh"}];
+const S = [{prompt:"Ask “What time is it?”", jp:"Mấy giờ rồi?", ro:"may zuh zoy"},{prompt:"Say “Half past eight.”", jp:"Tám giờ rưỡi.", ro:"tahm zuh zuh-uh-ee"},{prompt:"Say “See you at five o'clock.”", jp:"Hẹn gặp lúc năm giờ.", ro:"hen gahp look nahm zuh"}];
 /*END DATA*/
 // ---------- engine (shared by every lesson; edit data above, not below) ----------
 const $=id=>document.getElementById(id);
